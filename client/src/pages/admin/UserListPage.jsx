@@ -31,28 +31,28 @@ function UserListPage() {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      try {
-        const { data } = await API.get("/api/users");
+  try {
+    const { data } = await API.get("/api/users");
 
-console.log("Users API response:", data);
+    console.log("Users API response:", data);
 
-const usersArray =
-  Array.isArray(data)
-    ? data
-    : Array.isArray(data?.users)
-    ? data.users
-    : [];
+    const usersArray =
+      Array.isArray(data)
+        ? data
+        : Array.isArray(data?.users)
+        ? data.users
+        : [];
 
-setUsers(usersArray);
-      } catch (err) {
-        setError(
-          err.response?.data?.message ||
-            "Failed to fetch users"
-        );
-      } finally {
-        setLoading(false);
-      }
-    };
+    setUsers(usersArray);
+  } catch (err) {
+    setError(
+      err.response?.data?.message ||
+      "Failed to fetch users"
+    );
+  } finally {
+    setLoading(false);
+  }
+};
 
     fetchUsers();
   }, []);
