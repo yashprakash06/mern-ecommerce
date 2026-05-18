@@ -15,7 +15,7 @@ function OrderListPage() {
     const fetchOrders = async () => {
   try {
     const { data } = await API.get("/api/orders");
-    setOrders(data);
+    setOrders(Array.isArray(data) ? data : data.orders || []);
   } catch (err) {
     setError(
       err.response?.data?.message ||

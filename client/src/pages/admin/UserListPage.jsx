@@ -32,11 +32,9 @@ function UserListPage() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const { data } = await API.get(
-          "/api/users"
-        );
+        const { data } = await API.get("/api/users");
 
-        setUsers(data);
+        setUsers(Array.isArray(data) ? data : data.users || []);
       } catch (err) {
         setError(
           err.response?.data?.message ||

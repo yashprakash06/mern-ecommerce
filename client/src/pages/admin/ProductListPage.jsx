@@ -66,7 +66,7 @@ function ProductListPage() {
     const fetchProducts = async () => {
       try {
         const { data } = await API.get("/api/products");
-        setProducts(data);
+        setProducts(Array.isArray(data) ? data : data.products || []);
       } catch (err) {
         setError(
           err.response?.data?.message ||
