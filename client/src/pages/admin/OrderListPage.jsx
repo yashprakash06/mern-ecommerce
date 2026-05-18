@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import API from "../../services/api";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
@@ -13,36 +13,21 @@ function OrderListPage() {
 
   useEffect(() => {
     const fetchOrders = async () => {
-      try {
-        const token =
-          user?.token ||
-          user?.user?.token ||
-          currentUser?.token;
-
-        const config = {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        };
-
-        const { data } = await axios.get(
-          "/api/orders",
-          config
-        );
-
-        setOrders(data);
-      } catch (err) {
-        setError(
-          err.response?.data?.message ||
-            "Failed to fetch orders"
-        );
-      } finally {
-        setLoading(false);
-      }
-    };
+  try {
+    const { data } = await API.get("/api/orders");
+    setOrders(data);
+  } catch (err) {
+    setError(
+      err.response?.data?.message ||
+        "Failed to fetch orders"
+    );
+  } finally {
+    setLoading(false);
+  }
+};
 
     fetchOrders();
-  }, [user, currentUser]);
+  }, []);
 
   if (loading) {
     return (

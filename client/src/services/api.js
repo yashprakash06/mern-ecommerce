@@ -1,15 +1,23 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || "http://localhost:5000",
+  baseURL:
+    process.env.REACT_APP_API_URL ||
+    "http://localhost:5000",
 });
 
 // Automatically attach JWT token to every request
 API.interceptors.request.use((config) => {
-  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  const userInfo = JSON.parse(
+    localStorage.getItem("userInfo")
+  );
 
-  if (userInfo?.token) {
-    config.headers.Authorization = `Bearer ${userInfo.token}`;
+  const token =
+    userInfo?.token ||
+    userInfo?.user?.token;
+
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
   }
 
   return config;

@@ -1,17 +1,13 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import API from "../../services/api";
 import {
   useNavigate,
   useParams,
 } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
 
 function ProductEditPage() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { user } = useAuth();
-
-  const currentUser = user?.user || user;
 
   // Form state
   const [name, setName] = useState("");
@@ -27,23 +23,11 @@ function ProductEditPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  // Get JWT token
-  const token =
-    user?.token ||
-    user?.user?.token ||
-    currentUser?.token;
-
-  const config = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  };
-
   // Fetch product details
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const { data } = await axios.get(
+        const { data } = await API.get(
           `/api/products/${id}`
         );
 
@@ -79,29 +63,23 @@ function ProductEditPage() {
     try {
       setUploading(true);
 
-      const token =
-        user?.token ||
-        user?.user?.token ||
-        currentUser?.token;
+const formData = new FormData();
+formData.append("image", file);
 
-      const config = {
-        headers: {
-          "Content-Type":
-            "multipart/form-data",
-          Authorization: `Bearer ${token}`,
-        },
-      };
+const { data } = await API.post(
+  "/api/upload",
+  formData,
+  {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  }
+);
 
-      const { data } = await axios.post(
-        "/api/upload",
-        formData,
-        config
-      );
+// Update image field automatically
+setImage(data.image);
 
-      // Update image field automatically
-      setImage(data.image);
-
-      setUploading(false);
+setUploading(false);
     } catch (err) {
       setUploading(false);
 
@@ -117,7 +95,7 @@ function ProductEditPage() {
     e.preventDefault();
 
     try {
-      await axios.put(
+      await API.put(
         `/api/products/${id}`,
         {
           name,
@@ -127,8 +105,7 @@ function ProductEditPage() {
           category,
           countInStock,
           description,
-        },
-        config
+        }
       );
 
       navigate("/admin/productlist");

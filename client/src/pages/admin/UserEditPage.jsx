@@ -1,17 +1,13 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import API from "../../services/api";
 import {
   useNavigate,
   useParams,
 } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
 
 function UserEditPage() {
   const { id } = useParams(); // user ID from URL
   const navigate = useNavigate();
-  const { user } = useAuth();
-
-  const currentUser = user?.user || user;
 
   // Form state
   const [name, setName] = useState("");
@@ -22,25 +18,12 @@ function UserEditPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  // Get token from auth state
-  const token =
-    user?.token ||
-    user?.user?.token ||
-    currentUser?.token;
-
   // Fetch user details when page loads
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const config = {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        };
-
-        const { data } = await axios.get(
-          `/api/users/${id}`,
-          config
+        const { data } = await API.get(
+          `/api/users/${id}`
         );
 
         setName(data.name);
@@ -57,27 +40,20 @@ function UserEditPage() {
     };
 
     fetchUser();
-  }, [id, token]);
+  }, [id]);
 
   // Submit updated data
   const submitHandler = async (e) => {
     e.preventDefault();
 
     try {
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
-
-      await axios.put(
+      await API.put(
         `/api/users/${id}`,
         {
           name,
           email,
           isAdmin,
-        },
-        config
+        }
       );
 
       navigate("/admin/userlist");

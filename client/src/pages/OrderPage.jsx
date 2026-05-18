@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import API from "../services/api";
-import axios from "axios";
 import { useAuth } from "../context/AuthContext";
 
 function OrderPage() {
@@ -25,33 +24,21 @@ function OrderPage() {
   }, [id]);
 
   const deliverHandler = async () => {
-    try {
-      const token =
-        user?.token ||
-        user?.user?.token ||
-        currentUser?.token;
+  try {
+    await API.put(
+      `/api/orders/${order._id}/deliver`,
+      {}
+    );
 
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
-
-      await axios.put(
-        `/api/orders/${order._id}/deliver`,
-        {},
-        config
-      );
-
-      // Refresh order data
-      window.location.reload();
-    } catch (err) {
-      alert(
-        err.response?.data?.message ||
-          "Failed to mark order as delivered"
-      );
-    }
-  };
+    // Refresh order data
+    window.location.reload();
+  } catch (err) {
+    alert(
+      err.response?.data?.message ||
+        "Failed to mark order as delivered"
+    );
+  }
+};
 
   if (!order) {
     return (
@@ -122,7 +109,7 @@ function OrderPage() {
                         <img
                           src={
                             item.image?.startsWith("/uploads")
-                              ? `http://localhost:5000${item.image}`
+                              ? `${process.env.REACT_APP_API_URL}${item.image}`
                               : item.image
                           }
                           alt={item.name}

@@ -1,42 +1,30 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
-import { useAuth } from "../../context/AuthContext";
+import API from "../../services/api";
 import { Link } from "react-router-dom";
 
 function UserListPage() {
-  const { user } = useAuth();
-
-  // Normalize user shape
-  const currentUser = user?.user || user;
-
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   const deleteHandler = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this user?")) {
+    if (
+      !window.confirm(
+        "Are you sure you want to delete this user?"
+      )
+    ) {
       return;
     }
 
     try {
-      const token =
-        user?.token ||
-        user?.user?.token ||
-        currentUser?.token;
-
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
-
-      await axios.delete(`/api/users/${id}`, config);
+      await API.delete(`/api/users/${id}`);
 
       // Remove deleted user from local state
       setUsers(users.filter((u) => u._id !== id));
     } catch (err) {
       alert(
-        err.response?.data?.message || "Failed to delete user"
+        err.response?.data?.message ||
+          "Failed to delete user"
       );
     }
   };
@@ -44,27 +32,15 @@ function UserListPage() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const token =
-          user?.token ||
-          user?.user?.token ||
-          currentUser?.token;
-
-        const config = {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        };
-
-        //checking
-        console.log("Auth state:", user);
-        console.log("Token:", token);
-
-        const { data } = await axios.get("/api/users", config);
+        const { data } = await API.get(
+          "/api/users"
+        );
 
         setUsers(data);
       } catch (err) {
         setError(
-          err.response?.data?.message || "Failed to fetch users"
+          err.response?.data?.message ||
+            "Failed to fetch users"
         );
       } finally {
         setLoading(false);
@@ -72,7 +48,7 @@ function UserListPage() {
     };
 
     fetchUsers();
-  }, [currentUser, user]);
+  }, []);
 
   if (loading) {
     return (

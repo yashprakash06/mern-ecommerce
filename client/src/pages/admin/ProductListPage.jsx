@@ -1,11 +1,8 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import API from "../../services/api";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
 
 function ProductListPage() {
-  const { user } = useAuth();
-  const currentUser = user?.user || user;
   const navigate = useNavigate();
 
   const [products, setProducts] = useState([]);
@@ -23,18 +20,7 @@ function ProductListPage() {
     }
 
     try {
-      const token =
-        user?.token ||
-        user?.user?.token ||
-        currentUser?.token;
-
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
-
-      await axios.delete(`/api/products/${id}`, config);
+      await API.delete(`/api/products/${id}`);
 
       // Remove deleted product from UI
       setProducts(
@@ -60,21 +46,9 @@ function ProductListPage() {
     }
 
     try {
-      const token =
-        user?.token ||
-        user?.user?.token ||
-        currentUser?.token;
-
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
-
-      const { data } = await axios.post(
+      const { data } = await API.post(
         "/api/products",
-        {},
-        config
+        {}
       );
 
       // Redirect to product edit page
@@ -91,7 +65,7 @@ function ProductListPage() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const { data } = await axios.get("/api/products");
+        const { data } = await API.get("/api/products");
         setProducts(data);
       } catch (err) {
         setError(
