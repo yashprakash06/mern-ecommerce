@@ -28,16 +28,16 @@ function UserEditPage() {
     user?.user?.token ||
     currentUser?.token;
 
-  const config = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  };
-
   // Fetch user details when page loads
   useEffect(() => {
     const fetchUser = async () => {
       try {
+        const config = {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        };
+
         const { data } = await axios.get(
           `/api/users/${id}`,
           config
@@ -57,13 +57,19 @@ function UserEditPage() {
     };
 
     fetchUser();
-  }, [id, config]);
+  }, [id, token]);
 
   // Submit updated data
   const submitHandler = async (e) => {
     e.preventDefault();
 
     try {
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+
       await axios.put(
         `/api/users/${id}`,
         {

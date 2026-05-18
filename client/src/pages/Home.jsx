@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import API from "../services/api";
-import ProductCard from "../components/ProductCard";
 import { ProductGrid } from "../components/ProductCard";
 
 function Home() {
