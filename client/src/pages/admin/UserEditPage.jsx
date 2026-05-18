@@ -57,7 +57,7 @@ function UserEditPage() {
     };
 
     fetchUser();
-  }, [id]);
+  }, [id, config]);
 
   // Submit updated data
   const submitHandler = async (e) => {

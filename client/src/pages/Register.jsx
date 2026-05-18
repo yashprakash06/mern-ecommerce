@@ -55,19 +55,19 @@ function Register() {
           </div>
           <nav className="hidden md:flex items-center gap-8">
             <a
-              href="#"
+              href="/"
               className="text-sm text-neutral-600 hover:text-neutral-900 transition-colors"
             >
               Shop
             </a>
             <a
-              href="#"
+              href="/"
               className="text-sm text-neutral-600 hover:text-neutral-900 transition-colors"
             >
               New Arrivals
             </a>
             <a
-              href="#"
+              href="/"
               className="text-sm text-neutral-600 hover:text-neutral-900 transition-colors"
             >
               Support
@@ -153,11 +153,11 @@ function Register() {
               {/* Terms */}
               <p className="text-xs text-neutral-500 leading-relaxed">
                 By creating an account, you agree to our{" "}
-                <a href="#" className="text-neutral-900 underline hover:no-underline">
+                <a href="/" className="text-neutral-900 underline hover:no-underline">
                   Terms of Service
                 </a>{" "}
                 and{" "}
-                <a href="#" className="text-neutral-900 underline hover:no-underline">
+                <a href="/" className="text-neutral-900 underline hover:no-underline">
                   Privacy Policy
                 </a>
               </p>
@@ -279,19 +279,19 @@ function Register() {
             </p>
             <div className="flex items-center gap-6">
               <a
-                href="#"
+                href="/"
                 className="text-sm text-neutral-400 hover:text-neutral-600 transition-colors"
               >
                 Privacy
               </a>
               <a
-                href="#"
+                href="/"
                 className="text-sm text-neutral-400 hover:text-neutral-600 transition-colors"
               >
                 Terms
               </a>
               <a
-                href="#"
+                href="/"
                 className="text-sm text-neutral-400 hover:text-neutral-600 transition-colors"
               >
                 Help

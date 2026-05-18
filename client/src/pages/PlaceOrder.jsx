@@ -314,9 +314,9 @@ function PlaceOrder() {
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-neutral-500">
             <p>© 2024 Store. All rights reserved.</p>
             <div className="flex items-center gap-6">
-              <a href="#" className="hover:text-neutral-900 transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-neutral-900 transition-colors">Terms of Service</a>
-              <a href="#" className="hover:text-neutral-900 transition-colors">Contact Us</a>
+              <a href="/" className="hover:text-neutral-900 transition-colors">Privacy Policy</a>
+              <a href="/" className="hover:text-neutral-900 transition-colors">Terms of Service</a>
+              <a href="/" className="hover:text-neutral-900 transition-colors">Contact Us</a>
             </div>
           </div>
         </div>

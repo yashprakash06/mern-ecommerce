@@ -236,13 +236,13 @@ function Shipping() {
               2024 Store. All rights reserved.
             </p>
             <div className="flex items-center gap-6">
-              <a href="#" className="text-sm text-neutral-500 hover:text-neutral-900 transition-colors">
+              <a href="/" className="text-sm text-neutral-500 hover:text-neutral-900 transition-colors">
                 Privacy Policy
               </a>
-              <a href="#" className="text-sm text-neutral-500 hover:text-neutral-900 transition-colors">
+              <a href="/" className="text-sm text-neutral-500 hover:text-neutral-900 transition-colors">
                 Terms of Service
               </a>
-              <a href="#" className="text-sm text-neutral-500 hover:text-neutral-900 transition-colors">
+              <a href="/" className="text-sm text-neutral-500 hover:text-neutral-900 transition-colors">
                 Contact
               </a>
             </div>
