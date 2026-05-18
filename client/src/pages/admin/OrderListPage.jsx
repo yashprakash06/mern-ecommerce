@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
 function OrderListPage() {
-  const { user } = useAuth();
-  const currentUser = user?.user || user;
 
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
