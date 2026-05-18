@@ -111,16 +111,16 @@ function OrderListPage() {
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-3">
                           <div className="w-9 h-9 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold text-sm">
-                            {order.user ? order.user.name.charAt(0).toUpperCase() : "?"}
+                            {order.user?.name?.charAt(0)?.toUpperCase() || "?"}
                           </div>
                           <span className="text-gray-900 font-medium">
-                            {order.user ? order.user.name : "Deleted User"}
+                            {order.user?.name || "Deleted User"}
                           </span>
                         </div>
                       </td>
                       <td className="px-6 py-4">
                         <span className="text-gray-900 font-semibold">
-                          ₹{order.totalPrice.toLocaleString()}
+                          ₹{(order.totalPrice || 0).toLocaleString()}
                         </span>
                       </td>
                       <td className="px-6 py-4">
