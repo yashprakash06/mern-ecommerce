@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { getImageUrl } from "../utils/getImageUrl";
 
 // ProductGrid wrapper component for Amazon-style grid layout
 // Usage: <ProductGrid products={products} />
@@ -14,9 +15,7 @@ export function ProductGrid({ products }) {
 
 function ProductCard({ product }) {
   // Handle uploaded images from backend
-  const imageUrl = product.image?.startsWith("/uploads")
-    ? `http://localhost:5000${product.image}`
-    : product.image;
+  const imageUrl = getImageUrl(product.image);
 
   return (
     <div className="group relative flex flex-col bg-white rounded-2xl border border-neutral-200 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-neutral-200/50 hover:border-neutral-300">

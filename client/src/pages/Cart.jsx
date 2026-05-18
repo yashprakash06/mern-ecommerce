@@ -1,6 +1,7 @@
 import { useCart } from "../context/CartContext";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { getImageUrl } from "../utils/getImageUrl";
 
 function Cart() {
   const {
@@ -113,11 +114,7 @@ function Cart() {
                       {/* Product Image Placeholder */}
                     <div className="w-full sm:w-32 h-32 bg-neutral-100 rounded-xl flex-shrink-0 overflow-hidden">
                       <img
-                        src={
-                          item.image?.startsWith("/uploads")
-                            ? `http://localhost:5000${item.image}`
-                            : item.image
-                        }
+                        src={getImageUrl(item.image)}
                         alt={item.name}
                         className="w-full h-full object-cover"
                       />

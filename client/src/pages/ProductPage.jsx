@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import API from "../services/api";
 import { useCart } from "../context/CartContext";
 import { useNavigate } from "react-router-dom";
+import { getImageUrl } from "../utils/getImageUrl";
 
 function ProductPage() {
   const { id } = useParams();
@@ -134,9 +135,8 @@ function ProductPage() {
             <div className="aspect-square bg-white rounded-2xl border border-neutral-200 overflow-hidden flex items-center justify-center">
               {product.image ? (
                 <img
-                  src={product.image}
+                  src={getImageUrl(product.image)}
                   alt={product.name}
-                  className="w-full h-full object-contain p-8"
                 />
               ) : (
                 <div className="flex flex-col items-center justify-center text-neutral-400">
