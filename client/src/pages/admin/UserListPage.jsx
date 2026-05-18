@@ -84,6 +84,14 @@ function UserListPage() {
     );
   }
 
+  const adminCount = Array.isArray(users)
+  ? users.filter((u) => u.isAdmin).length
+  : 0;
+
+const userCount = Array.isArray(users)
+  ? users.filter((u) => !u.isAdmin).length
+  : 0;
+
   return (
     <div className="min-h-screen bg-neutral-50">
       {/* Header */}
@@ -101,15 +109,12 @@ function UserListPage() {
             <div className="flex items-center gap-2 text-sm text-neutral-500">
               <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-neutral-100 rounded-full">
                 <span className="w-2 h-2 bg-emerald-500 rounded-full" />
-                {Array.isArray(users)
-  ? users.filter((u) => u.isAdmin).length
-  : 0} Admins
+                {adminCount} Admins
               </span>
+
               <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-neutral-100 rounded-full">
                 <span className="w-2 h-2 bg-blue-500 rounded-full" />
-                {Array.isArray(users)
-  ? users.filter((u) => !u.isAdmin).length
-  : 0} Users
+                {userCount} Users
               </span>
             </div>
           </div>
