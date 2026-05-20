@@ -1,6 +1,8 @@
 import { useState } from "react";
 import API from "../services/api";
 import { useNavigate, Link } from "react-router-dom";
+import { signInWithPopup } from "firebase/auth";
+import { auth, googleProvider } from "../firebase";
 
 function Register() {
   const [name, setName] = useState("");
@@ -27,6 +29,27 @@ function Register() {
       alert(error.response?.data?.message || "Registration failed");
     }
   };
+
+  const handleGoogleRegister = async () => {
+  try {
+    const result = await signInWithPopup(auth, googleProvider);
+
+    const googleUser = result.user;
+
+    const { data } = await API.post("/api/auth/google", {
+      name: googleUser.displayName,
+      email: googleUser.email,
+      photo: googleUser.photoURL,
+    });
+
+    localStorage.setItem("userInfo", JSON.stringify(data));
+
+    window.location.href = "/";
+  } catch (error) {
+    console.error("Google Sign-Up Error:", error);
+    alert("Google sign up failed");
+  }
+};
 
   return (
     <div className="min-h-screen bg-neutral-50 flex flex-col">
@@ -187,6 +210,7 @@ function Register() {
             <div className="grid grid-cols-2 gap-3">
               <button
                 type="button"
+                onClick={handleGoogleRegister}
                 className="flex items-center justify-center gap-2 px-4 py-3 bg-white border border-neutral-200 rounded-xl text-neutral-700 font-medium hover:bg-neutral-50 focus:outline-none focus:ring-2 focus:ring-neutral-900 focus:ring-offset-1 transition-all duration-200"
               >
                 <svg className="w-5 h-5" viewBox="0 0 24 24">

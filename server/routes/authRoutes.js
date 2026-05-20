@@ -65,4 +65,49 @@ router.post("/login",async(req,res)=>{
     }
 });
 
+router.post("/google", async (req, res) => {
+  try {
+    const { name, email, photo } = req.body;
+
+    // Check if user already exists
+    let user = await User.findOne({ email });
+
+    // Create user if not found
+    if (!user) {
+      const randomPassword = Math.random()
+        .toString(36)
+        .slice(-8);
+
+      const hashedPassword = await bcrypt.hash(
+        randomPassword,
+        10
+      );
+
+      user = await User.create({
+        name,
+        email,
+        password: hashedPassword,
+      });
+    }
+
+    // Generate JWT
+    const token = jwt.sign(
+      { id: user._id },
+      process.env.JWT_SECRET,
+      { expiresIn: "7d" }
+    );
+
+    // Send response
+    res.json({
+      token,
+      user,
+    });
+  } catch (error) {
+    console.error("Google auth error:", error);
+    res.status(500).json({
+      message: "Google authentication failed",
+    });
+  }
+});
+
 export default router;

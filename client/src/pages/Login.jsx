@@ -4,6 +4,8 @@ import { useState } from "react";
 import API from "../services/api";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate, Link } from "react-router-dom";
+import { signInWithPopup } from "firebase/auth";
+import { auth, googleProvider } from "../firebase";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -37,6 +39,29 @@ function Login() {
       alert(err.response?.data?.message || "Login failed");
     }
   };
+
+    const handleGoogleLogin = async () => {
+      try {
+        const result = await signInWithPopup(auth, googleProvider);
+
+        const googleUser = result.user;
+
+        const { data } = await API.post("/api/auth/google", {
+          name: googleUser.displayName,
+          email: googleUser.email,
+          photo: googleUser.photoURL,
+        });
+
+        // Save login data exactly like normal login
+        localStorage.setItem("userInfo", JSON.stringify(data));
+
+        // Refresh app so AuthContext picks up the new login
+        window.location.href = "/";
+      } catch (error) {
+        console.error("Google Sign-In Error:", error);
+        alert("Google login failed");
+      }
+    };
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -175,6 +200,7 @@ function Login() {
               <button
                 type="button"
                 className="flex items-center justify-center gap-2 rounded-lg border border-border bg-background px-4 py-3 text-sm font-medium text-foreground transition-colors hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-ring/20"
+                onClick={handleGoogleLogin}
               >
                 <svg className="h-5 w-5" viewBox="0 0 24 24">
                   <path
