@@ -6,6 +6,10 @@ function PlaceOrder() {
   const { cartItems, updateCartQty } = useCart();
   const navigate = useNavigate();
 
+  const userInfo = JSON.parse(
+  localStorage.getItem("userInfo")
+);
+
   // Load saved checkout information
   const shippingAddress = JSON.parse(
     localStorage.getItem("shippingAddress")
@@ -48,6 +52,109 @@ function PlaceOrder() {
       alert(error.response?.data?.message || "Failed to place order");
     }
   };
+
+  const handlePayment = async () => {
+  try {
+    // STEP 1: Create MongoDB Order
+    const { data: createdOrder } = await API.post(
+      "/api/orders",
+      {
+        orderItems: cartItems,
+        shippingAddress,
+        paymentMethod,
+        totalPrice,
+      }
+    );
+
+    console.log("MongoDB Order:", createdOrder);
+
+    // STEP 2: Create Razorpay Order
+    const { data: razorpayOrder } = await API.post(
+      "/api/payment/orders",
+      {
+        amount: totalPrice,
+      }
+    );
+
+    const options = {
+      key: "rzp_test_SslmBJvjg9sqvg",
+
+      amount: razorpayOrder.amount,
+
+      currency: razorpayOrder.currency,
+
+      name: "Yash Store",
+
+      description: "Order Payment",
+
+      order_id: razorpayOrder.id,
+
+      handler: async function (response) {
+        try {
+          // STEP 3: Verify Payment
+          const verifyResponse = await API.post(
+            "/api/payment/verify",
+            {
+              razorpay_order_id:
+                response.razorpay_order_id,
+
+              razorpay_payment_id:
+                response.razorpay_payment_id,
+
+              razorpay_signature:
+                response.razorpay_signature,
+
+              // IMPORTANT:
+              orderId: createdOrder._id,
+            }
+          );
+
+          console.log(
+            "Verification response:",
+            verifyResponse.data
+          );
+
+          alert("Payment successful!");
+
+          // Clear cart
+          localStorage.removeItem("cartItems");
+
+          cartItems.forEach((item) => {
+            updateCartQty(item._id, 0);
+          });
+
+          // Redirect
+          navigate("/myorders");
+        } catch (error) {
+          console.error(
+            "Payment verification failed:",
+            error
+          );
+
+          alert("Payment verification failed");
+        }
+      },
+
+      prefill: {
+        name: userInfo?.user?.name,
+
+        email: userInfo?.user?.email,
+      },
+
+      theme: {
+        color: "#111827",
+      },
+    };
+
+    const razorpay = new window.Razorpay(options);
+
+    razorpay.open();
+  } catch (error) {
+    console.error("Payment Error:", error);
+
+    alert("Payment failed");
+  }
+};
 
   // Checkout steps for progress indicator
   const steps = [
@@ -262,6 +369,7 @@ function PlaceOrder() {
 
               <button
                 onClick={handlePlaceOrder}
+                onClick={handlePayment}
                 disabled={cartItems.length === 0}
                 className={`
                   w-full mt-6 py-4 px-6 rounded-xl font-semibold text-base
