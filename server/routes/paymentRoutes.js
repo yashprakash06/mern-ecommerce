@@ -49,6 +49,10 @@ router.post("/verify", async (req, res) => {
       .update(body.toString())
       .digest("hex");
 
+      console.log("Expected Signature:", expectedSignature);
+
+      console.log("Received Signature:", razorpay_signature);
+
     // Verify signature
     const isAuthentic =
       expectedSignature === razorpay_signature;
@@ -80,6 +84,8 @@ router.post("/verify", async (req, res) => {
     };
 
     await order.save();
+
+    console.log("Order marked as PAID:", order._id);
 
     res.json({
       success: true,

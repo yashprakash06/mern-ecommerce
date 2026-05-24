@@ -76,6 +76,8 @@ function PlaceOrder() {
       }
     );
 
+    console.log("Razorpay Order:", razorpayOrder);
+
     const options = {
       key: "rzp_test_SslmBJvjg9sqvg",
 
@@ -87,10 +89,26 @@ function PlaceOrder() {
 
       description: "Order Payment",
 
+      image:
+        "https://cdn-icons-png.flaticon.com/512/3081/3081559.png",
+
       order_id: razorpayOrder.id,
+
+      method: {
+        upi: true,
+        card: true,
+        netbanking: true,
+        wallet: true,
+      },
 
       handler: async function (response) {
         try {
+          console.log(
+            "PAYMENT SUCCESS CALLBACK FIRED"
+          );
+
+          console.log("Response:", response);
+
           // STEP 3: Verify Payment
           const verifyResponse = await API.post(
             "/api/payment/verify",
@@ -104,8 +122,8 @@ function PlaceOrder() {
               razorpay_signature:
                 response.razorpay_signature,
 
-              // IMPORTANT:
-              orderId: createdOrder._id,
+              // MongoDB Order ID
+              orderId: createdOrder.order._id,
             }
           );
 
@@ -136,17 +154,55 @@ function PlaceOrder() {
       },
 
       prefill: {
-        name: userInfo?.user?.name,
+        name:
+          userInfo?.user?.name || "Test User",
 
-        email: userInfo?.user?.email,
+        email:
+          userInfo?.user?.email ||
+          "test@example.com",
+
+        contact: "9999999999",
+      },
+
+      notes: {
+        address: "Yash Store Corporate Office",
       },
 
       theme: {
         color: "#111827",
       },
+
+      modal: {
+        ondismiss: function () {
+          console.log(
+            "Razorpay popup closed"
+          );
+        },
+      },
     };
 
-    const razorpay = new window.Razorpay(options);
+    console.log(
+      "Opening Razorpay with options:",
+      options
+    );
+
+    const razorpay = new window.Razorpay(
+      options
+    );
+
+    razorpay.on("payment.failed", function (
+      response
+    ) {
+      console.error(
+        "PAYMENT FAILED EVENT:",
+        response
+      );
+
+      alert(
+        response.error.description ||
+          "Payment failed"
+      );
+    });
 
     razorpay.open();
   } catch (error) {
