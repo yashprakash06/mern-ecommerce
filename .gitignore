@@ -8,8 +8,12 @@ server/node_modules
 client/.env
 server/.env
 
-# Build files
+# Production builds
+build
 client/build
+
+# Coverage
+coverage
 
 # Uploaded images
 server/uploads
@@ -22,3 +26,7 @@ yarn-error.log*
 # OS files
 .DS_Store
 Thumbs.db
+
+# PNP
+.pnp
+.pnp.js

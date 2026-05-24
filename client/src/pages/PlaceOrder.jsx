@@ -79,7 +79,7 @@ function PlaceOrder() {
     console.log("Razorpay Order:", razorpayOrder);
 
     const options = {
-      key: "rzp_test_SslmBJvjg9sqvg",
+      key:process.env.REACT_APP_RAZORPAY_KEY_ID,
 
       amount: razorpayOrder.amount,
 
@@ -181,79 +181,19 @@ function PlaceOrder() {
       },
     };
 
-    console.log(
-      "Opening Razorpay with options:",
-      options
-    );
-
     const razorpay = new window.Razorpay(
       options
     );
 
-    setTimeout(async () => {
-  try {
-    const verifyResponse = await API.post(
-      "/api/payment/verify",
-      {
-        razorpay_order_id: "test_order",
-        razorpay_payment_id: "test_payment",
-        razorpay_signature: "test_signature",
-        orderId: createdOrder.order._id,
-      }
-    );
+  razorpay.on("payment.failed", function (response) {
+    alert(response.error.description);
+  });
 
-    console.log(
-      "FORCED VERIFY RESPONSE:",
-      verifyResponse.data
-    );
-
-    alert("TEST PAYMENT SUCCESS");
-
-    navigate("/myorders");
-  } catch (error) {
-    console.error(error);
-  }
-}, 3000);
-
-    razorpay.on("payment.failed", function (
-  response
-) {
-  console.log("FULL FAILURE RESPONSE:");
-
-  console.log(response);
-
-  console.log(
-    "ERROR DESCRIPTION:",
-    response.error.description
-  );
-
-  console.log(
-    "ERROR REASON:",
-    response.error.reason
-  );
-
-  console.log(
-    "ERROR SOURCE:",
-    response.error.source
-  );
-
-  console.log(
-    "ERROR STEP:",
-    response.error.step
-  );
-
-  console.log(
-    "ERROR CODE:",
-    response.error.code
-  );
-
-  alert(response.error.description);
-});
-
-    razorpay.open();
-  } catch (error) {
+  razorpay.open();
+  } 
+  catch (error) 
+  {
     console.error("Payment Error:", error);
-
     alert("Payment failed");
   }
 };

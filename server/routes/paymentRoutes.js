@@ -49,22 +49,15 @@ router.post("/verify", async (req, res) => {
       .update(body.toString())
       .digest("hex");
 
-      console.log("Expected Signature:", expectedSignature);
-
-      console.log("Received Signature:", razorpay_signature);
-
     // Verify signature
-    const isAuthentic =
+    let isAuthentic =
       expectedSignature === razorpay_signature;
 
-    // if (!isAuthentic) {
-    //   return res.status(400).json({
-    //     message: "Invalid payment signature",
-    //   });
-    // }
-
-    // TEMPORARY TEST MODE BYPASS
-    isAuthentic = true;
+    if (!isAuthentic) {
+      return res.status(400).json({
+        message: "Invalid payment signature",
+      });
+    }
 
     // Find order in MongoDB
     const order = await Order.findById(orderId);
@@ -87,9 +80,7 @@ router.post("/verify", async (req, res) => {
     };
 
     await order.save();
-
-    console.log("Order marked as PAID:", order._id);
-
+    
     res.json({
       success: true,
       message: "Payment verified successfully",
