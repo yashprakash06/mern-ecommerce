@@ -24,34 +24,34 @@ function PlaceOrder() {
   );
 
   // Handle actual order creation
-  const handlePlaceOrder = async () => {
-    try {
-      const res = await API.post("/api/orders", {
-        orderItems: cartItems,
-        shippingAddress,
-        paymentMethod,
-        totalPrice,
-      });
+  // const handlePlaceOrder = async () => {
+  //   try {
+  //     const res = await API.post("/api/orders", {
+  //       orderItems: cartItems,
+  //       shippingAddress,
+  //       paymentMethod,
+  //       totalPrice,
+  //     });
 
-      console.log("Order created:", res.data);
+  //     console.log("Order created:", res.data);
 
-      alert("Order placed successfully 🎉");
+  //     alert("Order placed successfully 🎉");
 
-      // Clear cart in localStorage
-      localStorage.removeItem("cartItems");
+  //     // Clear cart in localStorage
+  //     localStorage.removeItem("cartItems");
 
-      // Clear cart in React state
-      cartItems.forEach((item) => {
-        updateCartQty(item._id, 0);
-      });
+  //     // Clear cart in React state
+  //     cartItems.forEach((item) => {
+  //       updateCartQty(item._id, 0);
+  //     });
 
-      // Redirect to homepage
-      navigate("/");
-    } catch (error) {
-      console.error(error.response?.data?.message);
-      alert(error.response?.data?.message || "Failed to place order");
-    }
-  };
+  //     // Redirect to homepage
+  //     navigate("/");
+  //   } catch (error) {
+  //     console.error(error.response?.data?.message);
+  //     alert(error.response?.data?.message || "Failed to place order");
+  //   }
+  // };
 
   const handlePayment = async () => {
   try {
@@ -368,7 +368,7 @@ function PlaceOrder() {
               </div>
 
               <button
-                onClick={handlePlaceOrder}
+                //onClick={handlePlaceOrder}
                 onClick={handlePayment}
                 disabled={cartItems.length === 0}
                 className={`
