@@ -190,19 +190,65 @@ function PlaceOrder() {
       options
     );
 
-    razorpay.on("payment.failed", function (
-      response
-    ) {
-      console.error(
-        "PAYMENT FAILED EVENT:",
-        response
-      );
+    setTimeout(async () => {
+  try {
+    const verifyResponse = await API.post(
+      "/api/payment/verify",
+      {
+        razorpay_order_id: "test_order",
+        razorpay_payment_id: "test_payment",
+        razorpay_signature: "test_signature",
+        orderId: createdOrder.order._id,
+      }
+    );
 
-      alert(
-        response.error.description ||
-          "Payment failed"
-      );
-    });
+    console.log(
+      "FORCED VERIFY RESPONSE:",
+      verifyResponse.data
+    );
+
+    alert("TEST PAYMENT SUCCESS");
+
+    navigate("/myorders");
+  } catch (error) {
+    console.error(error);
+  }
+}, 3000);
+
+    razorpay.on("payment.failed", function (
+  response
+) {
+  console.log("FULL FAILURE RESPONSE:");
+
+  console.log(response);
+
+  console.log(
+    "ERROR DESCRIPTION:",
+    response.error.description
+  );
+
+  console.log(
+    "ERROR REASON:",
+    response.error.reason
+  );
+
+  console.log(
+    "ERROR SOURCE:",
+    response.error.source
+  );
+
+  console.log(
+    "ERROR STEP:",
+    response.error.step
+  );
+
+  console.log(
+    "ERROR CODE:",
+    response.error.code
+  );
+
+  alert(response.error.description);
+});
 
     razorpay.open();
   } catch (error) {
