@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import API from "../services/api";
 import { useCart } from "../context/CartContext";
-import { useNavigate } from "react-router-dom";
 import { getImageUrl } from "../utils/getImageUrl";
 
 function ProductPage() {
@@ -32,10 +31,10 @@ function ProductPage() {
 
   if (!product) {
     return (
-      <div className="min-h-screen bg-neutral-50 flex items-center justify-center">
+      <div className="min-h-[calc(100vh-3.5rem)] bg-slate-50 dark:bg-[#070514] flex items-center justify-center transition-colors duration-200">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-10 h-10 border-4 border-neutral-200 border-t-neutral-900 rounded-full animate-spin"></div>
-          <p className="text-neutral-600 text-lg font-medium">Loading product...</p>
+          <div className="w-10 h-10 border-4 border-slate-200 dark:border-[#281F4D] border-t-indigo-600 dark:border-t-indigo-500 rounded-full animate-spin"></div>
+          <p className="text-slate-600 dark:text-slate-400 text-lg font-medium">Loading product...</p>
         </div>
       </div>
     );
@@ -59,7 +58,7 @@ function ProductPage() {
             <defs>
               <linearGradient id="halfStar">
                 <stop offset="50%" stopColor="currentColor" />
-                <stop offset="50%" stopColor="#e5e5e5" />
+                <stop offset="50%" stopColor="#cbd5e1" />
               </linearGradient>
             </defs>
             <path fill="url(#halfStar)" d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
@@ -67,7 +66,7 @@ function ProductPage() {
         );
       } else {
         stars.push(
-          <svg key={i} className="w-5 h-5 text-neutral-200 fill-current" viewBox="0 0 20 20">
+          <svg key={i} className="w-5 h-5 text-slate-200 dark:text-slate-700 fill-current" viewBox="0 0 20 20">
             <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
           </svg>
         );
@@ -77,52 +76,16 @@ function ProductPage() {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-50 flex flex-col">
-      {/* Header */}
-      <header className="bg-white/80 backdrop-blur-md border-b border-neutral-200 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-8">
-              <a href="/" className="text-xl font-semibold tracking-tight text-neutral-900">
-                Store
-              </a>
-              <nav className="hidden md:flex items-center gap-6">
-                <a href="/" className="text-sm text-neutral-600 hover:text-neutral-900 transition-colors">
-                  Home
-                </a>
-                <a href="/products" className="text-sm text-neutral-600 hover:text-neutral-900 transition-colors">
-                  Products
-                </a>
-                <a href="/categories" className="text-sm text-neutral-600 hover:text-neutral-900 transition-colors">
-                  Categories
-                </a>
-              </nav>
-            </div>
-            <div className="flex items-center gap-4">
-              <button className="p-2 text-neutral-600 hover:text-neutral-900 transition-colors">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-              </button>
-              <a href="/cart" className="p-2 text-neutral-600 hover:text-neutral-900 transition-colors relative">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </header>
-
+    <div className="min-h-[calc(100vh-3.5rem)] bg-slate-50 dark:bg-[#070514] flex flex-col transition-colors duration-200">
       {/* Breadcrumb */}
-      <div className="bg-white border-b border-neutral-100">
+      <div className="bg-white dark:bg-[#100C24] border-b border-slate-200 dark:border-[#281F4D] transition-colors duration-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
           <nav className="flex items-center gap-2 text-sm">
-            <a href="/" className="text-neutral-500 hover:text-neutral-900 transition-colors">Home</a>
-            <span className="text-neutral-300">/</span>
-            <a href="/products" className="text-neutral-500 hover:text-neutral-900 transition-colors">Products</a>
-            <span className="text-neutral-300">/</span>
-            <span className="text-neutral-900 font-medium truncate max-w-xs">{product.name}</span>
+            <a href="/" className="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">Home</a>
+            <span className="text-slate-300 dark:text-slate-700">/</span>
+            <a href="/" className="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">Products</a>
+            <span className="text-slate-300 dark:text-slate-700">/</span>
+            <span className="text-slate-900 dark:text-white font-medium truncate max-w-xs">{product.name}</span>
           </nav>
         </div>
       </div>
@@ -132,14 +95,15 @@ function ProductPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
             {/* Product Image */}
-            <div className="aspect-square bg-white rounded-2xl border border-neutral-200 overflow-hidden flex items-center justify-center">
+            <div className="aspect-square bg-white dark:bg-[#1A1438] rounded-2xl border border-slate-200 dark:border-[#382B66] overflow-hidden flex items-center justify-center p-8 transition-colors duration-200">
               {product.image ? (
                 <img
                   src={getImageUrl(product.image)}
                   alt={product.name}
+                  className="w-full h-full object-contain"
                 />
               ) : (
-                <div className="flex flex-col items-center justify-center text-neutral-400">
+                <div className="flex flex-col items-center justify-center text-slate-400 dark:text-slate-600">
                   <svg className="w-24 h-24 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
@@ -151,12 +115,12 @@ function ProductPage() {
             {/* Product Details */}
             <div className="flex flex-col">
               {/* Brand */}
-              <span className="text-sm font-medium text-blue-600 uppercase tracking-wide mb-2">
+              <span className="text-sm font-medium text-indigo-600 dark:text-indigo-400 uppercase tracking-wide mb-2">
                 {product.brand}
               </span>
 
               {/* Title */}
-              <h1 className="text-3xl lg:text-4xl font-semibold text-neutral-900 tracking-tight mb-4 text-balance">
+              <h1 className="text-3xl lg:text-4xl font-semibold text-slate-900 dark:text-white tracking-tight mb-4 text-balance transition-colors duration-200">
                 {product.name}
               </h1>
 
@@ -165,41 +129,41 @@ function ProductPage() {
                 <div className="flex items-center gap-1">
                   {renderStars(product.rating)}
                 </div>
-                <span className="text-sm text-neutral-600">
+                <span className="text-sm text-slate-600 dark:text-slate-400">
                   {product.rating} out of 5
                 </span>
               </div>
 
               {/* Price */}
               <div className="flex items-baseline gap-2 mb-6">
-                <span className="text-4xl font-semibold text-neutral-900">
+                <span className="text-4xl font-bold text-slate-900 dark:text-white transition-colors duration-200">
                   ₹{product.price?.toLocaleString()}
                 </span>
-                <span className="text-sm text-neutral-500">incl. of all taxes</span>
+                <span className="text-sm text-slate-500 dark:text-slate-400">incl. of all taxes</span>
               </div>
 
               {/* Divider */}
-              <div className="border-t border-neutral-200 my-6"></div>
+              <div className="border-t border-slate-200 dark:border-[#281F4D] my-6 transition-colors duration-200"></div>
 
               {/* Category */}
               <div className="flex items-center gap-2 mb-4">
-                <span className="text-sm text-neutral-500">Category:</span>
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-neutral-100 text-neutral-700">
+                <span className="text-sm text-slate-500 dark:text-slate-400">Category:</span>
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-slate-100 dark:bg-[#1A1438] text-slate-700 dark:text-slate-300">
                   {product.category}
                 </span>
               </div>
 
               {/* Stock Status */}
               <div className="flex items-center gap-2 mb-6">
-                <span className="text-sm text-neutral-500">Availability:</span>
+                <span className="text-sm text-slate-500 dark:text-slate-400">Availability:</span>
                 {product.countInStock > 0 ? (
-                  <span className="inline-flex items-center gap-1.5 text-sm font-medium text-green-700">
-                    <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                  <span className="inline-flex items-center gap-1.5 text-sm font-medium text-green-700 dark:text-green-400">
+                    <span className="w-2 h-2 bg-green-500 dark:bg-green-400 rounded-full"></span>
                     In Stock ({product.countInStock} available)
                   </span>
                 ) : (
-                  <span className="inline-flex items-center gap-1.5 text-sm font-medium text-red-600">
-                    <span className="w-2 h-2 bg-red-500 rounded-full"></span>
+                  <span className="inline-flex items-center gap-1.5 text-sm font-medium text-red-600 dark:text-red-400">
+                    <span className="w-2 h-2 bg-red-500 dark:bg-red-400 rounded-full"></span>
                     Out of Stock
                   </span>
                 )}
@@ -207,8 +171,8 @@ function ProductPage() {
 
               {/* Description */}
               <div className="mb-8">
-                <h3 className="text-sm font-medium text-neutral-900 mb-2">Description</h3>
-                <p className="text-neutral-600 leading-relaxed">
+                <h3 className="text-sm font-medium text-slate-900 dark:text-white mb-2 transition-colors duration-200">Description</h3>
+                <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
                   {product.description}
                 </p>
               </div>
@@ -217,31 +181,31 @@ function ProductPage() {
               <button
                 onClick={handleAddToCart}
                 disabled={product.countInStock === 0}
-                className="w-full bg-neutral-900 text-white font-medium py-4 px-6 rounded-xl hover:bg-neutral-800 active:scale-[0.98] transition-all duration-200 disabled:bg-neutral-300 disabled:cursor-not-allowed disabled:active:scale-100 text-base"
+                className="w-full bg-indigo-600 dark:bg-indigo-500 text-white font-medium py-4 px-6 rounded-xl hover:bg-indigo-700 dark:hover:bg-indigo-600 active:scale-[0.98] transition-all duration-200 disabled:bg-slate-300 dark:disabled:bg-slate-800 disabled:text-slate-500 dark:disabled:text-slate-600 disabled:cursor-not-allowed disabled:active:scale-100 text-base shadow-sm"
               >
                 {product.countInStock > 0 ? "Add to Cart" : "Out of Stock"}
               </button>
 
               {/* Trust Badges */}
-              <div className="mt-6 pt-6 border-t border-neutral-200">
+              <div className="mt-6 pt-6 border-t border-slate-200 dark:border-[#281F4D] transition-colors duration-200">
                 <div className="grid grid-cols-3 gap-4">
                   <div className="flex flex-col items-center text-center">
-                    <svg className="w-6 h-6 text-neutral-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-6 h-6 text-slate-400 dark:text-slate-500 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                     </svg>
-                    <span className="text-xs text-neutral-500">Secure Checkout</span>
+                    <span className="text-xs text-slate-500 dark:text-slate-400">Secure Checkout</span>
                   </div>
                   <div className="flex flex-col items-center text-center">
-                    <svg className="w-6 h-6 text-neutral-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-6 h-6 text-slate-400 dark:text-slate-500 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
                     </svg>
-                    <span className="text-xs text-neutral-500">Easy Returns</span>
+                    <span className="text-xs text-slate-500 dark:text-slate-400">Easy Returns</span>
                   </div>
                   <div className="flex flex-col items-center text-center">
-                    <svg className="w-6 h-6 text-neutral-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-6 h-6 text-slate-400 dark:text-slate-500 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
                     </svg>
-                    <span className="text-xs text-neutral-500">Free Shipping</span>
+                    <span className="text-xs text-slate-500 dark:text-slate-400">Free Shipping</span>
                   </div>
                 </div>
               </div>
@@ -249,28 +213,6 @@ function ProductPage() {
           </div>
         </div>
       </main>
-
-      {/* Footer */}
-      <footer className="bg-white border-t border-neutral-200 py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-neutral-500">
-              © 2024 Store. All rights reserved.
-            </p>
-            <div className="flex items-center gap-6">
-              <a href="/privacy" className="text-sm text-neutral-500 hover:text-neutral-900 transition-colors">
-                Privacy Policy
-              </a>
-              <a href="/terms" className="text-sm text-neutral-500 hover:text-neutral-900 transition-colors">
-                Terms of Service
-              </a>
-              <a href="/contact" className="text-sm text-neutral-500 hover:text-neutral-900 transition-colors">
-                Contact Us
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
