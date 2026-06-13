@@ -31,9 +31,9 @@ function ProductPage() {
 
   if (!product) {
     return (
-      <div className="min-h-[calc(100vh-3.5rem)] bg-slate-50 dark:bg-slate-950 flex items-center justify-center transition-colors duration-200">
+      <div className="min-h-[calc(100vh-3.5rem)] bg-slate-50 dark:bg-[#070514] flex items-center justify-center transition-colors duration-200">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-10 h-10 border-4 border-slate-200 dark:border-slate-800 border-t-indigo-600 dark:border-t-indigo-500 rounded-full animate-spin"></div>
+          <div className="w-10 h-10 border-4 border-slate-200 dark:border-[#281F4D] border-t-indigo-600 dark:border-t-indigo-500 rounded-full animate-spin"></div>
           <p className="text-slate-600 dark:text-slate-400 text-lg font-medium">Loading product...</p>
         </div>
       </div>
@@ -76,9 +76,9 @@ function ProductPage() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-3.5rem)] bg-slate-50 dark:bg-slate-950 flex flex-col transition-colors duration-200">
+    <div className="min-h-[calc(100vh-3.5rem)] bg-slate-50 dark:bg-[#070514] flex flex-col transition-colors duration-200">
       {/* Breadcrumb */}
-      <div className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 transition-colors duration-200">
+      <div className="bg-white dark:bg-[#100C24] border-b border-slate-200 dark:border-[#281F4D] transition-colors duration-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
           <nav className="flex items-center gap-2 text-sm">
             <a href="/" className="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">Home</a>
@@ -95,7 +95,7 @@ function ProductPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
             {/* Product Image */}
-            <div className="aspect-square bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden flex items-center justify-center p-8 transition-colors duration-200">
+            <div className="aspect-square bg-white dark:bg-[#1A1438] rounded-2xl border border-slate-200 dark:border-[#382B66] overflow-hidden flex items-center justify-center p-8 transition-colors duration-200">
               {product.image ? (
                 <img
                   src={getImageUrl(product.image)}
@@ -143,12 +143,12 @@ function ProductPage() {
               </div>
 
               {/* Divider */}
-              <div className="border-t border-slate-200 dark:border-slate-800 my-6 transition-colors duration-200"></div>
+              <div className="border-t border-slate-200 dark:border-[#281F4D] my-6 transition-colors duration-200"></div>
 
               {/* Category */}
               <div className="flex items-center gap-2 mb-4">
                 <span className="text-sm text-slate-500 dark:text-slate-400">Category:</span>
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-slate-100 dark:bg-[#1A1438] text-slate-700 dark:text-slate-300">
                   {product.category}
                 </span>
               </div>
@@ -187,7 +187,7 @@ function ProductPage() {
               </button>
 
               {/* Trust Badges */}
-              <div className="mt-6 pt-6 border-t border-slate-200 dark:border-slate-800 transition-colors duration-200">
+              <div className="mt-6 pt-6 border-t border-slate-200 dark:border-[#281F4D] transition-colors duration-200">
                 <div className="grid grid-cols-3 gap-4">
                   <div className="flex flex-col items-center text-center">
                     <svg className="w-6 h-6 text-slate-400 dark:text-slate-500 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

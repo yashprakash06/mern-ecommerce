@@ -15,9 +15,9 @@ function ProductCard({ product }) {
   const imageUrl = getImageUrl(product.image);
 
   return (
-    <div className="group relative flex flex-col bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-slate-200/50 dark:hover:shadow-slate-900/50 hover:-translate-y-1">
+    <div className="group relative flex flex-col bg-white dark:bg-[#100C24] rounded-2xl border border-slate-200 dark:border-[#281F4D] overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-slate-200/50 dark:hover:shadow-slate-900/50 hover:-translate-y-1">
       {/* Product Image Container */}
-      <div className="relative h-56 bg-slate-50 dark:bg-slate-800 overflow-hidden">
+      <div className="relative h-56 bg-slate-50 dark:bg-[#1A1438] overflow-hidden">
         <img
           src={imageUrl}
           alt={product.name}
@@ -31,7 +31,7 @@ function ProductCard({ product }) {
       <div className="flex flex-col flex-1 p-5">
         {/* Brand & Category Tags */}
         <div className="flex items-center gap-2 mb-3">
-          <span className="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+          <span className="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-slate-100 dark:bg-[#1A1438] text-slate-600 dark:text-slate-300">
             {product.brand}
           </span>
           <span className="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-400">
@@ -52,7 +52,7 @@ function ProductCard({ product }) {
         </p>
 
         {/* Price & Action */}
-        <div className="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800">
+        <div className="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-[#281F4D]">
           <div className="flex flex-col">
             <span className="text-[10px] text-slate-400 dark:text-slate-500 uppercase tracking-wider font-semibold">Price</span>
             <span className="text-lg font-bold text-slate-900 dark:text-white">

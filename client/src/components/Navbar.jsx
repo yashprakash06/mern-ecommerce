@@ -17,7 +17,7 @@ function Navbar() {
   };
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl transition-colors duration-200">
+    <nav className="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-[#281F4D] bg-white/80 dark:bg-[#070514]/80 backdrop-blur-xl transition-colors duration-200">
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link
@@ -60,7 +60,7 @@ function Navbar() {
           )}
 
           {currentUser?.isAdmin && (
-            <div className="hidden items-center border-l border-slate-200 dark:border-slate-700 pl-2 sm:flex space-x-1">
+            <div className="hidden items-center border-l border-slate-200 dark:border-[#382B66] pl-2 sm:flex space-x-1">
               <Link
                 to="/admin/userlist"
                 className="rounded-md px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 transition-colors hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white"
@@ -82,7 +82,7 @@ function Navbar() {
             </div>
           )}
 
-          <div className="flex items-center gap-3 border-l border-slate-200 dark:border-slate-700 pl-3 sm:pl-4">
+          <div className="flex items-center gap-3 border-l border-slate-200 dark:border-[#382B66] pl-3 sm:pl-4">
             <button
               onClick={toggleTheme}
               className="p-1.5 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
@@ -121,7 +121,7 @@ function Navbar() {
 
       {/* Mobile Admin Links */}
       {currentUser?.isAdmin && (
-        <div className="flex items-center justify-center gap-4 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 py-2 sm:hidden transition-colors">
+        <div className="flex items-center justify-center gap-4 border-t border-slate-200 dark:border-[#281F4D] bg-slate-50 dark:bg-[#100C24]/50 py-2 sm:hidden transition-colors">
           <Link to="/admin/userlist" className="text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">Users</Link>
           <Link to="/admin/productlist" className="text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">Products</Link>
           <Link to="/admin/orderlist" className="text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">Orders</Link>

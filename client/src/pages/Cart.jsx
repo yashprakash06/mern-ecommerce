@@ -29,7 +29,7 @@ function Cart() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-3.5rem)] bg-slate-50 dark:bg-slate-950 transition-colors duration-200">
+    <div className="min-h-[calc(100vh-3.5rem)] bg-slate-50 dark:bg-[#070514] transition-colors duration-200">
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
         {/* Page Title */}
         <div className="mb-8">
@@ -44,8 +44,8 @@ function Cart() {
         </div>
 
         {cartItems.length === 0 ? (
-          <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-12 text-center transition-colors duration-200 shadow-sm">
-            <div className="w-16 h-16 mx-auto mb-6 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center">
+          <div className="bg-white dark:bg-[#100C24] rounded-2xl border border-slate-200 dark:border-[#281F4D] p-12 text-center transition-colors duration-200 shadow-sm">
+            <div className="w-16 h-16 mx-auto mb-6 bg-slate-100 dark:bg-[#1A1438] rounded-full flex items-center justify-center">
               <svg className="w-8 h-8 text-slate-400 dark:text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
               </svg>
@@ -63,7 +63,7 @@ function Cart() {
           <div className="lg:grid lg:grid-cols-12 lg:gap-8">
             {/* Cart Items */}
             <div className="lg:col-span-8">
-              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden transition-colors duration-200 shadow-sm">
+              <div className="bg-white dark:bg-[#100C24] rounded-2xl border border-slate-200 dark:border-[#281F4D] overflow-hidden transition-colors duration-200 shadow-sm">
                 <div className="divide-y divide-slate-100 dark:divide-slate-800">
                   {cartItems.map((item) => (
                     <div
@@ -71,7 +71,7 @@ function Cart() {
                       className="p-6 flex flex-col sm:flex-row gap-6"
                     >
                       {/* Product Image Placeholder */}
-                    <div className="w-full sm:w-32 h-32 bg-slate-50 dark:bg-slate-800 rounded-xl flex-shrink-0 overflow-hidden border border-slate-100 dark:border-slate-700">
+                    <div className="w-full sm:w-32 h-32 bg-slate-50 dark:bg-[#1A1438] rounded-xl flex-shrink-0 overflow-hidden border border-slate-100 dark:border-[#382B66]">
                       <img
                         src={getImageUrl(item.image)}
                         alt={item.name}
@@ -98,21 +98,21 @@ function Cart() {
                               onClick={() =>
                                 updateCartQty(item._id, item.qty - 1)
                               }
-                              className="w-9 h-9 flex items-center justify-center border border-slate-300 dark:border-slate-700 rounded-l-lg text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors disabled:opacity-50"
+                              className="w-9 h-9 flex items-center justify-center border border-slate-300 dark:border-[#382B66] rounded-l-lg text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors disabled:opacity-50"
                               disabled={item.qty <= 1}
                             >
                               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
                               </svg>
                             </button>
-                            <span className="w-12 h-9 flex items-center justify-center border-y border-slate-300 dark:border-slate-700 text-sm font-medium text-slate-900 dark:text-white bg-white dark:bg-slate-900 transition-colors duration-200">
+                            <span className="w-12 h-9 flex items-center justify-center border-y border-slate-300 dark:border-[#382B66] text-sm font-medium text-slate-900 dark:text-white bg-white dark:bg-[#100C24] transition-colors duration-200">
                               {item.qty}
                             </span>
                             <button
                               onClick={() =>
                                 updateCartQty(item._id, item.qty + 1)
                               }
-                              className="w-9 h-9 flex items-center justify-center border border-slate-300 dark:border-slate-700 rounded-r-lg text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+                              className="w-9 h-9 flex items-center justify-center border border-slate-300 dark:border-[#382B66] rounded-r-lg text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
                             >
                               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
@@ -157,12 +157,12 @@ function Cart() {
 
             {/* Order Summary */}
             <div className="lg:col-span-4 mt-8 lg:mt-0">
-              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 sticky top-24 transition-colors duration-200 shadow-sm">
+              <div className="bg-white dark:bg-[#100C24] rounded-2xl border border-slate-200 dark:border-[#281F4D] p-6 sticky top-24 transition-colors duration-200 shadow-sm">
                 <h2 className="text-lg font-semibold text-slate-900 dark:text-white mb-6 transition-colors duration-200">
                   Order Summary
                 </h2>
 
-                <div className="space-y-4 pb-6 border-b border-slate-200 dark:border-slate-800 transition-colors duration-200">
+                <div className="space-y-4 pb-6 border-b border-slate-200 dark:border-[#281F4D] transition-colors duration-200">
                   <div className="flex justify-between text-sm">
                     <span className="text-slate-500 dark:text-slate-400">Subtotal ({cartItems.length} items)</span>
                     <span className="font-medium text-slate-900 dark:text-white transition-colors duration-200">₹{totalPrice.toLocaleString()}</span>
@@ -177,7 +177,7 @@ function Cart() {
                   </div>
                 </div>
 
-                <div className="flex justify-between py-6 border-b border-slate-200 dark:border-slate-800 transition-colors duration-200">
+                <div className="flex justify-between py-6 border-b border-slate-200 dark:border-[#281F4D] transition-colors duration-200">
                   <span className="text-base font-semibold text-slate-900 dark:text-white transition-colors duration-200">Total</span>
                   <span className="text-xl font-bold text-slate-900 dark:text-white transition-colors duration-200">₹{totalPrice.toLocaleString()}</span>
                 </div>
@@ -190,7 +190,7 @@ function Cart() {
                 </button>
 
                 {/* Trust Badges */}
-                <div className="mt-6 pt-6 border-t border-slate-200 dark:border-slate-800 transition-colors duration-200">
+                <div className="mt-6 pt-6 border-t border-slate-200 dark:border-[#281F4D] transition-colors duration-200">
                   <div className="grid grid-cols-2 gap-4">
                     <div className="flex items-center gap-2">
                       <svg className="w-5 h-5 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
