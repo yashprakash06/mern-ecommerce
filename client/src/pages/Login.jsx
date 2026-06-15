@@ -64,9 +64,9 @@ function Login() {
     };
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#070514] transition-colors duration-200 flex flex-col">
       {/* Header */}
-      <header className="w-full border-b border-border bg-background/80 backdrop-blur-sm">
+      <header className="w-full border-b border-slate-200 dark:border-[#281F4D] transition-colors duration-200 bg-slate-50 dark:bg-[#070514] transition-colors duration-200/80 backdrop-blur-sm">
         <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             <Link to="/" className="flex items-center gap-2">
@@ -85,26 +85,26 @@ function Login() {
                   />
                 </svg>
               </div>
-              <span className="text-xl font-semibold tracking-tight text-foreground">
+              <span className="text-xl font-semibold tracking-tight text-slate-900 dark:text-white transition-colors duration-200">
                 Store
               </span>
             </Link>
             <nav className="hidden items-center gap-8 md:flex">
               <Link
                 to="/products"
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                className="text-sm font-medium text-slate-500 dark:text-slate-400 transition-colors duration-200 transition-colors hover:text-slate-900 dark:text-white transition-colors duration-200"
               >
                 Products
               </Link>
               <Link
                 to="/categories"
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                className="text-sm font-medium text-slate-500 dark:text-slate-400 transition-colors duration-200 transition-colors hover:text-slate-900 dark:text-white transition-colors duration-200"
               >
                 Categories
               </Link>
               <Link
                 to="/support"
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                className="text-sm font-medium text-slate-500 dark:text-slate-400 transition-colors duration-200 transition-colors hover:text-slate-900 dark:text-white transition-colors duration-200"
               >
                 Support
               </Link>
@@ -117,12 +117,12 @@ function Login() {
       <main className="flex flex-1 items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
         <div className="w-full max-w-md">
           {/* Login Card */}
-          <div className="rounded-2xl border border-border bg-card p-8 shadow-sm sm:p-10">
+          <div className="rounded-2xl border border-slate-200 dark:border-[#281F4D] transition-colors duration-200 bg-white dark:bg-[#100C24] transition-colors duration-200 p-8 shadow-sm sm:p-10">
             <div className="mb-8 text-center">
-              <h1 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+              <h1 className="text-2xl font-semibold tracking-tight text-slate-900 dark:text-white transition-colors duration-200 sm:text-3xl">
                 Sign in
               </h1>
-              <p className="mt-2 text-sm text-muted-foreground">
+              <p className="mt-2 text-sm text-slate-500 dark:text-slate-400 transition-colors duration-200">
                 Welcome back. Enter your credentials to continue.
               </p>
             </div>
@@ -132,7 +132,7 @@ function Login() {
               <div className="space-y-2">
                 <label
                   htmlFor="email"
-                  className="block text-sm font-medium text-foreground"
+                  className="block text-sm font-medium text-slate-900 dark:text-white transition-colors duration-200"
                 >
                   Email address
                 </label>
@@ -142,7 +142,7 @@ function Login() {
                   placeholder="name@example.com"
                   autoComplete="email"
                   required
-                  className="block w-full rounded-lg border border-input bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground transition-colors focus:border-foreground focus:outline-none focus:ring-2 focus:ring-ring/20"
+                  className="block w-full rounded-lg border border-slate-200 dark:border-[#382B66] transition-colors duration-200 bg-slate-50 dark:bg-[#070514] transition-colors duration-200 px-4 py-3 text-sm text-slate-900 dark:text-white transition-colors duration-200 placeholder:text-slate-500 dark:text-slate-400 transition-colors duration-200 transition-colors focus:border-foreground focus:outline-none focus:ring-2 focus:ring-indigo-600/20"
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
@@ -152,13 +152,13 @@ function Login() {
                 <div className="flex items-center justify-between">
                   <label
                     htmlFor="password"
-                    className="block text-sm font-medium text-foreground"
+                    className="block text-sm font-medium text-slate-900 dark:text-white transition-colors duration-200"
                   >
                     Password
                   </label>
                   <Link
                     to="/forgot-password"
-                    className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                    className="text-sm font-medium text-slate-500 dark:text-slate-400 transition-colors duration-200 transition-colors hover:text-slate-900 dark:text-white transition-colors duration-200"
                   >
                     Forgot password?
                   </Link>
@@ -169,7 +169,7 @@ function Login() {
                   placeholder="Enter your password"
                   autoComplete="current-password"
                   required
-                  className="block w-full rounded-lg border border-input bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground transition-colors focus:border-foreground focus:outline-none focus:ring-2 focus:ring-ring/20"
+                  className="block w-full rounded-lg border border-slate-200 dark:border-[#382B66] transition-colors duration-200 bg-slate-50 dark:bg-[#070514] transition-colors duration-200 px-4 py-3 text-sm text-slate-900 dark:text-white transition-colors duration-200 placeholder:text-slate-500 dark:text-slate-400 transition-colors duration-200 transition-colors focus:border-foreground focus:outline-none focus:ring-2 focus:ring-indigo-600/20"
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
@@ -177,7 +177,7 @@ function Login() {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="relative w-full rounded-lg bg-foreground px-4 py-3 text-sm font-semibold text-background transition-all hover:bg-foreground/90 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background active:scale-[0.98]"
+                className="relative w-full rounded-lg bg-foreground px-4 py-3 text-sm font-semibold text-background transition-all hover:bg-foreground/90 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2 focus:ring-offset-background active:scale-[0.98]"
               >
                 Sign in
               </button>
@@ -186,10 +186,10 @@ function Login() {
             {/* Divider */}
             <div className="relative my-8">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-border" />
+                <div className="w-full border-t border-slate-200 dark:border-[#281F4D] transition-colors duration-200" />
               </div>
               <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-card px-3 text-muted-foreground">
+                <span className="bg-white dark:bg-[#100C24] transition-colors duration-200 px-3 text-slate-500 dark:text-slate-400 transition-colors duration-200">
                   Or continue with
                 </span>
               </div>
@@ -199,7 +199,7 @@ function Login() {
             <div className="grid grid-cols-2 gap-4">
               <button
                 type="button"
-                className="flex items-center justify-center gap-2 rounded-lg border border-border bg-background px-4 py-3 text-sm font-medium text-foreground transition-colors hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-ring/20"
+                className="flex items-center justify-center gap-2 rounded-lg border border-slate-200 dark:border-[#281F4D] transition-colors duration-200 bg-slate-50 dark:bg-[#070514] transition-colors duration-200 px-4 py-3 text-sm font-medium text-slate-900 dark:text-white transition-colors duration-200 transition-colors hover:bg-slate-100 dark:bg-[#1A1438] transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-600/20"
                 onClick={handleGoogleLogin}
               >
                 <svg className="h-5 w-5" viewBox="0 0 24 24">
@@ -224,7 +224,7 @@ function Login() {
               </button>
               <button
                 type="button"
-                className="flex items-center justify-center gap-2 rounded-lg border border-border bg-background px-4 py-3 text-sm font-medium text-foreground transition-colors hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-ring/20"
+                className="flex items-center justify-center gap-2 rounded-lg border border-slate-200 dark:border-[#281F4D] transition-colors duration-200 bg-slate-50 dark:bg-[#070514] transition-colors duration-200 px-4 py-3 text-sm font-medium text-slate-900 dark:text-white transition-colors duration-200 transition-colors hover:bg-slate-100 dark:bg-[#1A1438] transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-600/20"
               >
                 <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701" />
@@ -234,11 +234,11 @@ function Login() {
             </div>
 
             {/* Register Link */}
-            <p className="mt-8 text-center text-sm text-muted-foreground">
+            <p className="mt-8 text-center text-sm text-slate-500 dark:text-slate-400 transition-colors duration-200">
               {"Don't have an account?"}{" "}
               <Link
                 to="/register"
-                className="font-semibold text-foreground underline-offset-4 transition-colors hover:underline"
+                className="font-semibold text-slate-900 dark:text-white transition-colors duration-200 underline-offset-4 transition-colors hover:underline"
               >
                 Create an account
               </Link>
@@ -246,7 +246,7 @@ function Login() {
           </div>
 
           {/* Trust Badges */}
-          <div className="mt-8 flex items-center justify-center gap-6 text-muted-foreground">
+          <div className="mt-8 flex items-center justify-center gap-6 text-slate-500 dark:text-slate-400 transition-colors duration-200">
             <div className="flex items-center gap-2">
               <svg
                 className="h-4 w-4"
@@ -284,28 +284,28 @@ function Login() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-border bg-background py-6">
+      <footer className="border-t border-slate-200 dark:border-[#281F4D] transition-colors duration-200 bg-slate-50 dark:bg-[#070514] transition-colors duration-200 py-6">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-            <p className="text-xs text-muted-foreground">
+            <p className="text-xs text-slate-500 dark:text-slate-400 transition-colors duration-200">
               &copy; {new Date().getFullYear()} Store. All rights reserved.
             </p>
             <div className="flex items-center gap-6">
               <Link
                 to="/privacy"
-                className="text-xs text-muted-foreground transition-colors hover:text-foreground"
+                className="text-xs text-slate-500 dark:text-slate-400 transition-colors duration-200 transition-colors hover:text-slate-900 dark:text-white transition-colors duration-200"
               >
                 Privacy Policy
               </Link>
               <Link
                 to="/terms"
-                className="text-xs text-muted-foreground transition-colors hover:text-foreground"
+                className="text-xs text-slate-500 dark:text-slate-400 transition-colors duration-200 transition-colors hover:text-slate-900 dark:text-white transition-colors duration-200"
               >
                 Terms of Service
               </Link>
               <Link
                 to="/contact"
-                className="text-xs text-muted-foreground transition-colors hover:text-foreground"
+                className="text-xs text-slate-500 dark:text-slate-400 transition-colors duration-200 transition-colors hover:text-slate-900 dark:text-white transition-colors duration-200"
               >
                 Contact
               </Link>

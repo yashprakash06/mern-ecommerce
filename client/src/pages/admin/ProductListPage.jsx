@@ -82,10 +82,10 @@ function ProductListPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-slate-50 dark:bg-[#070514] transition-colors duration-200 flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-10 h-10 border-4 border-gray-200 border-t-indigo-600 rounded-full animate-spin"></div>
-          <p className="text-gray-600 font-medium">Loading products...</p>
+          <div className="w-10 h-10 border-4 border-slate-200 dark:border-[#281F4D] transition-colors duration-200 border-t-indigo-600 rounded-full animate-spin"></div>
+          <p className="text-slate-600 dark:text-slate-300 transition-colors duration-200 font-medium">Loading products...</p>
         </div>
       </div>
     );
@@ -93,28 +93,28 @@ function ProductListPage() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-        <div className="bg-white rounded-2xl shadow-sm border border-red-100 p-8 max-w-md w-full text-center">
+      <div className="min-h-screen bg-slate-50 dark:bg-[#070514] transition-colors duration-200 flex items-center justify-center p-4">
+        <div className="bg-white dark:bg-[#100C24] transition-colors duration-200 rounded-2xl shadow-sm border border-red-100 p-8 max-w-md w-full text-center">
           <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <svg className="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
             </svg>
           </div>
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">Error Loading Products</h2>
-          <p className="text-gray-600">{error}</p>
+          <h2 className="text-xl font-semibold text-slate-900 dark:text-white transition-colors duration-200 mb-2">Error Loading Products</h2>
+          <p className="text-slate-600 dark:text-slate-300 transition-colors duration-200">{error}</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#070514] transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
           <div>
-            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Product Management</h1>
-            <p className="mt-1 text-gray-500">
+            <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white transition-colors duration-200">Product Management</h1>
+            <p className="mt-1 text-slate-500 dark:text-slate-400 transition-colors duration-200">
               {products.length} {products.length === 1 ? "product" : "products"} in inventory
             </p>
           </div>
@@ -130,31 +130,31 @@ function ProductListPage() {
         </div>
 
         {/* Products Table - Desktop */}
-        <div className="hidden lg:block bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <div className="hidden lg:block bg-white dark:bg-[#100C24] transition-colors duration-200 rounded-2xl shadow-sm border border-slate-100 dark:border-[#382B66] transition-colors duration-200 overflow-hidden">
           <table className="w-full">
             <thead>
-              <tr className="bg-gray-50 border-b border-gray-100">
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Product ID</th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Name</th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Price</th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Brand</th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Category</th>
-                <th className="px-6 py-4 text-right text-xs font-semibold text-gray-500 uppercase tracking-wider">Actions</th>
+              <tr className="bg-slate-50 dark:bg-[#070514] transition-colors duration-200 border-b border-slate-100 dark:border-[#382B66] transition-colors duration-200">
+                <th className="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 transition-colors duration-200 uppercase tracking-wider">Product ID</th>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 transition-colors duration-200 uppercase tracking-wider">Name</th>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 transition-colors duration-200 uppercase tracking-wider">Price</th>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 transition-colors duration-200 uppercase tracking-wider">Brand</th>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 transition-colors duration-200 uppercase tracking-wider">Category</th>
+                <th className="px-6 py-4 text-right text-xs font-semibold text-slate-500 dark:text-slate-400 transition-colors duration-200 uppercase tracking-wider">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-100">
+            <tbody className="divide-y divide-slate-100 dark:divide-[#382B66] transition-colors duration-200">
               {products.map((product) => (
-                <tr key={product._id} className="hover:bg-gray-50 transition-colors">
+                <tr key={product._id} className="hover:bg-slate-50 dark:bg-[#070514] transition-colors duration-200 transition-colors">
                   <td className="px-6 py-4">
-                    <span className="text-xs font-mono text-gray-500 bg-gray-100 px-2 py-1 rounded">
+                    <span className="text-xs font-mono text-slate-500 dark:text-slate-400 transition-colors duration-200 bg-slate-100 dark:bg-[#1A1438] transition-colors duration-200 px-2 py-1 rounded">
                       {product._id.slice(-8)}
                     </span>
                   </td>
                   <td className="px-6 py-4">
-                    <p className="font-medium text-gray-900">{product.name}</p>
+                    <p className="font-medium text-slate-900 dark:text-white transition-colors duration-200">{product.name}</p>
                   </td>
                   <td className="px-6 py-4">
-                    <span className="font-semibold text-gray-900">₹{product.price?.toLocaleString()}</span>
+                    <span className="font-semibold text-slate-900 dark:text-white transition-colors duration-200">₹{product.price?.toLocaleString()}</span>
                   </td>
                   <td className="px-6 py-4">
                     <span className="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-medium bg-blue-50 text-blue-700">
@@ -196,13 +196,13 @@ function ProductListPage() {
         {/* Products Cards - Mobile/Tablet */}
         <div className="lg:hidden space-y-4">
           {products.map((product) => (
-            <div key={product._id} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5">
+            <div key={product._id} className="bg-white dark:bg-[#100C24] transition-colors duration-200 rounded-2xl shadow-sm border border-slate-100 dark:border-[#382B66] transition-colors duration-200 p-5">
               <div className="flex items-start justify-between mb-4">
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-semibold text-gray-900 truncate">{product.name}</h3>
-                  <p className="text-xs font-mono text-gray-500 mt-1">ID: {product._id.slice(-8)}</p>
+                  <h3 className="font-semibold text-slate-900 dark:text-white transition-colors duration-200 truncate">{product.name}</h3>
+                  <p className="text-xs font-mono text-slate-500 dark:text-slate-400 transition-colors duration-200 mt-1">ID: {product._id.slice(-8)}</p>
                 </div>
-                <span className="text-lg font-bold text-gray-900 ml-4">₹{product.price?.toLocaleString()}</span>
+                <span className="text-lg font-bold text-slate-900 dark:text-white transition-colors duration-200 ml-4">₹{product.price?.toLocaleString()}</span>
               </div>
 
               <div className="flex flex-wrap gap-2 mb-4">
@@ -214,7 +214,7 @@ function ProductListPage() {
                 </span>
               </div>
 
-              <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
+              <div className="flex items-center gap-3 pt-4 border-t border-slate-100 dark:border-[#382B66] transition-colors duration-200">
                 <Link to={`/admin/product/${product._id}/edit`} className="flex-1">
                   <button className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium text-indigo-600 bg-indigo-50 rounded-xl hover:bg-indigo-100 transition-colors">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -239,14 +239,14 @@ function ProductListPage() {
 
         {/* Empty State */}
         {products.length === 0 && (
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-12 text-center">
-            <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="bg-white dark:bg-[#100C24] transition-colors duration-200 rounded-2xl shadow-sm border border-slate-100 dark:border-[#382B66] transition-colors duration-200 p-12 text-center">
+            <div className="w-16 h-16 bg-slate-100 dark:bg-[#1A1438] transition-colors duration-200 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg className="w-8 h-8 text-slate-400 dark:text-slate-500 transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
               </svg>
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">No products yet</h3>
-            <p className="text-gray-500 mb-6">Get started by creating your first product.</p>
+            <h3 className="text-lg font-semibold text-slate-900 dark:text-white transition-colors duration-200 mb-2">No products yet</h3>
+            <p className="text-slate-500 dark:text-slate-400 transition-colors duration-200 mb-6">Get started by creating your first product.</p>
             <button
               onClick={createProductHandler}
               className="inline-flex items-center gap-2 px-5 py-2.5 bg-indigo-600 text-white font-medium rounded-xl hover:bg-indigo-700 transition-colors"
