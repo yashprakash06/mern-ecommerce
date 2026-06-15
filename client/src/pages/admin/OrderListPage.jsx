@@ -28,10 +28,10 @@ function OrderListPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-slate-50 dark:bg-[#070514] transition-colors duration-200 flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
           <div className="w-12 h-12 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
-          <p className="text-gray-600 font-medium">Loading orders...</p>
+          <p className="text-slate-600 dark:text-slate-300 transition-colors duration-200 font-medium">Loading orders...</p>
         </div>
       </div>
     );
@@ -39,69 +39,69 @@ function OrderListPage() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-        <div className="bg-white rounded-2xl shadow-lg p-8 max-w-md w-full text-center">
+      <div className="min-h-screen bg-slate-50 dark:bg-[#070514] transition-colors duration-200 flex items-center justify-center p-4">
+        <div className="bg-white dark:bg-[#100C24] transition-colors duration-200 rounded-2xl shadow-lg p-8 max-w-md w-full text-center">
           <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <svg className="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
             </svg>
           </div>
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">Error Loading Orders</h2>
-          <p className="text-gray-600">{error}</p>
+          <h2 className="text-xl font-semibold text-slate-900 dark:text-white transition-colors duration-200 mb-2">Error Loading Orders</h2>
+          <p className="text-slate-600 dark:text-slate-300 transition-colors duration-200">{error}</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#070514] transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="mb-8">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">Order Management</h1>
-              <p className="mt-1 text-gray-500">View and manage all customer orders</p>
+              <h1 className="text-3xl font-bold text-slate-900 dark:text-white transition-colors duration-200">Order Management</h1>
+              <p className="mt-1 text-slate-500 dark:text-slate-400 transition-colors duration-200">View and manage all customer orders</p>
             </div>
             <div className="flex items-center gap-3">
-              <span className="inline-flex items-center px-4 py-2 bg-white rounded-xl shadow-sm border border-gray-200">
+              <span className="inline-flex items-center px-4 py-2 bg-white dark:bg-[#100C24] transition-colors duration-200 rounded-xl shadow-sm border border-slate-200 dark:border-[#281F4D] transition-colors duration-200">
                 <span className="text-2xl font-bold text-indigo-600">{orders.length}</span>
-                <span className="ml-2 text-gray-600 text-sm">Total Orders</span>
+                <span className="ml-2 text-slate-600 dark:text-slate-300 transition-colors duration-200 text-sm">Total Orders</span>
               </span>
             </div>
           </div>
         </div>
 
         {orders.length === 0 ? (
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-12 text-center">
-            <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="bg-white dark:bg-[#100C24] transition-colors duration-200 rounded-2xl shadow-sm border border-slate-200 dark:border-[#281F4D] transition-colors duration-200 p-12 text-center">
+            <div className="w-20 h-20 bg-slate-100 dark:bg-[#1A1438] transition-colors duration-200 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg className="w-10 h-10 text-slate-400 dark:text-slate-500 transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
               </svg>
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-1">No orders yet</h3>
-            <p className="text-gray-500">Orders will appear here once customers start purchasing.</p>
+            <h3 className="text-lg font-semibold text-slate-900 dark:text-white transition-colors duration-200 mb-1">No orders yet</h3>
+            <p className="text-slate-500 dark:text-slate-400 transition-colors duration-200">Orders will appear here once customers start purchasing.</p>
           </div>
         ) : (
           <>
             {/* Desktop Table */}
-            <div className="hidden lg:block bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+            <div className="hidden lg:block bg-white dark:bg-[#100C24] transition-colors duration-200 rounded-2xl shadow-sm border border-slate-200 dark:border-[#281F4D] transition-colors duration-200 overflow-hidden">
               <table className="w-full">
                 <thead>
-                  <tr className="bg-gray-50 border-b border-gray-200">
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Order ID</th>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Customer</th>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Total</th>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Payment</th>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Delivery</th>
-                    <th className="px-6 py-4 text-right text-xs font-semibold text-gray-500 uppercase tracking-wider">Actions</th>
+                  <tr className="bg-slate-50 dark:bg-[#070514] transition-colors duration-200 border-b border-slate-200 dark:border-[#281F4D] transition-colors duration-200">
+                    <th className="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 transition-colors duration-200 uppercase tracking-wider">Order ID</th>
+                    <th className="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 transition-colors duration-200 uppercase tracking-wider">Customer</th>
+                    <th className="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 transition-colors duration-200 uppercase tracking-wider">Total</th>
+                    <th className="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 transition-colors duration-200 uppercase tracking-wider">Payment</th>
+                    <th className="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 transition-colors duration-200 uppercase tracking-wider">Delivery</th>
+                    <th className="px-6 py-4 text-right text-xs font-semibold text-slate-500 dark:text-slate-400 transition-colors duration-200 uppercase tracking-wider">Actions</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-200">
+                <tbody className="divide-y divide-slate-200 dark:divide-[#281F4D] transition-colors duration-200">
                   {orders.map((order) => (
-                    <tr key={order._id} className="hover:bg-gray-50 transition-colors">
+                    <tr key={order._id} className="hover:bg-slate-50 dark:bg-[#070514] transition-colors duration-200 transition-colors">
                       <td className="px-6 py-4">
-                        <span className="font-mono text-sm text-gray-900 bg-gray-100 px-2 py-1 rounded">
+                        <span className="font-mono text-sm text-slate-900 dark:text-white transition-colors duration-200 bg-slate-100 dark:bg-[#1A1438] transition-colors duration-200 px-2 py-1 rounded">
                           #{order._id.slice(-8).toUpperCase()}
                         </span>
                       </td>
@@ -110,13 +110,13 @@ function OrderListPage() {
                           <div className="w-9 h-9 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold text-sm">
                             {order.user?.name?.charAt(0)?.toUpperCase() || "?"}
                           </div>
-                          <span className="text-gray-900 font-medium">
+                          <span className="text-slate-900 dark:text-white transition-colors duration-200 font-medium">
                             {order.user?.name || "Deleted User"}
                           </span>
                         </div>
                       </td>
                       <td className="px-6 py-4">
-                        <span className="text-gray-900 font-semibold">
+                        <span className="text-slate-900 dark:text-white transition-colors duration-200 font-semibold">
                           ₹{(order.totalPrice || 0).toLocaleString()}
                         </span>
                       </td>
@@ -175,25 +175,25 @@ function OrderListPage() {
             {/* Mobile Cards */}
             <div className="lg:hidden space-y-4">
               {orders.map((order) => (
-                <div key={order._id} className="bg-white rounded-2xl shadow-sm border border-gray-200 p-5">
+                <div key={order._id} className="bg-white dark:bg-[#100C24] transition-colors duration-200 rounded-2xl shadow-sm border border-slate-200 dark:border-[#281F4D] transition-colors duration-200 p-5">
                   <div className="flex items-center justify-between mb-4">
-                    <span className="font-mono text-sm text-gray-900 bg-gray-100 px-2 py-1 rounded">
+                    <span className="font-mono text-sm text-slate-900 dark:text-white transition-colors duration-200 bg-slate-100 dark:bg-[#1A1438] transition-colors duration-200 px-2 py-1 rounded">
                       #{order._id.slice(-8).toUpperCase()}
                     </span>
-                    <span className="text-lg font-bold text-gray-900">
+                    <span className="text-lg font-bold text-slate-900 dark:text-white transition-colors duration-200">
                       ₹{order.totalPrice.toLocaleString()}
                     </span>
                   </div>
 
-                  <div className="flex items-center gap-3 mb-4 pb-4 border-b border-gray-100">
+                  <div className="flex items-center gap-3 mb-4 pb-4 border-b border-slate-100 dark:border-[#382B66] transition-colors duration-200">
                     <div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold">
                       {order.user ? order.user.name.charAt(0).toUpperCase() : "?"}
                     </div>
                     <div>
-                      <p className="font-medium text-gray-900">
+                      <p className="font-medium text-slate-900 dark:text-white transition-colors duration-200">
                         {order.user ? order.user.name : "Deleted User"}
                       </p>
-                      <p className="text-sm text-gray-500">Customer</p>
+                      <p className="text-sm text-slate-500 dark:text-slate-400 transition-colors duration-200">Customer</p>
                     </div>
                   </div>
 

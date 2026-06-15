@@ -52,12 +52,12 @@ function Register() {
 };
 
   return (
-    <div className="min-h-screen bg-neutral-50 flex flex-col">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#070514] transition-colors duration-200 flex flex-col">
       {/* Header */}
-      <header className="w-full border-b border-neutral-200 bg-white/80 backdrop-blur-md sticky top-0 z-50">
+      <header className="w-full border-b border-slate-200 dark:border-[#281F4D] transition-colors duration-200 bg-white/80 dark:bg-[#100C24]/80 transition-colors duration-200 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-neutral-900 rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-indigo-600 dark:bg-indigo-500 shadow-sm rounded-lg flex items-center justify-center">
               <svg
                 className="w-5 h-5 text-white"
                 fill="none"
@@ -72,26 +72,26 @@ function Register() {
                 />
               </svg>
             </div>
-            <span className="text-xl font-semibold text-neutral-900 tracking-tight">
+            <span className="text-xl font-semibold text-slate-900 dark:text-white transition-colors duration-200 tracking-tight">
               Store
             </span>
           </div>
           <nav className="hidden md:flex items-center gap-8">
             <a
               href="/"
-              className="text-sm text-neutral-600 hover:text-neutral-900 transition-colors"
+              className="text-sm text-slate-600 dark:text-slate-300 transition-colors duration-200 hover:text-slate-900 dark:text-white transition-colors duration-200 transition-colors"
             >
               Shop
             </a>
             <a
               href="/"
-              className="text-sm text-neutral-600 hover:text-neutral-900 transition-colors"
+              className="text-sm text-slate-600 dark:text-slate-300 transition-colors duration-200 hover:text-slate-900 dark:text-white transition-colors duration-200 transition-colors"
             >
               New Arrivals
             </a>
             <a
               href="/"
-              className="text-sm text-neutral-600 hover:text-neutral-900 transition-colors"
+              className="text-sm text-slate-600 dark:text-slate-300 transition-colors duration-200 hover:text-slate-900 dark:text-white transition-colors duration-200 transition-colors"
             >
               Support
             </a>
@@ -103,13 +103,13 @@ function Register() {
       <main className="flex-1 flex items-center justify-center px-4 py-12">
         <div className="w-full max-w-md">
           {/* Card */}
-          <div className="bg-white rounded-2xl shadow-sm border border-neutral-200 p-8 md:p-10">
+          <div className="bg-white dark:bg-[#100C24] transition-colors duration-200 rounded-2xl shadow-sm border border-slate-200 dark:border-[#281F4D] transition-colors duration-200 p-8 md:p-10">
             {/* Header */}
             <div className="text-center mb-8">
-              <h1 className="text-2xl md:text-3xl font-semibold text-neutral-900 tracking-tight">
+              <h1 className="text-2xl md:text-3xl font-semibold text-slate-900 dark:text-white transition-colors duration-200 tracking-tight">
                 Create your account
               </h1>
-              <p className="mt-2 text-neutral-500 text-sm">
+              <p className="mt-2 text-slate-500 dark:text-slate-400 transition-colors duration-200 text-sm">
                 Join us and start shopping today
               </p>
             </div>
@@ -120,7 +120,7 @@ function Register() {
               <div className="space-y-2">
                 <label
                   htmlFor="name"
-                  className="block text-sm font-medium text-neutral-700"
+                  className="block text-sm font-medium text-slate-700 dark:text-slate-300 transition-colors duration-200"
                 >
                   Full Name
                 </label>
@@ -130,7 +130,7 @@ function Register() {
                   placeholder="John Doe"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-neutral-900 focus:border-transparent transition-all duration-200"
+                  className="w-full px-4 py-3 bg-slate-50 dark:bg-[#070514] transition-colors duration-200 border border-slate-200 dark:border-[#281F4D] transition-colors duration-200 rounded-xl text-slate-900 dark:text-white transition-colors duration-200 placeholder:text-slate-400 dark:text-slate-500 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent transition-all duration-200"
                 />
               </div>
 
@@ -138,7 +138,7 @@ function Register() {
               <div className="space-y-2">
                 <label
                   htmlFor="email"
-                  className="block text-sm font-medium text-neutral-700"
+                  className="block text-sm font-medium text-slate-700 dark:text-slate-300 transition-colors duration-200"
                 >
                   Email Address
                 </label>
@@ -148,7 +148,7 @@ function Register() {
                   placeholder="you@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-neutral-900 focus:border-transparent transition-all duration-200"
+                  className="w-full px-4 py-3 bg-slate-50 dark:bg-[#070514] transition-colors duration-200 border border-slate-200 dark:border-[#281F4D] transition-colors duration-200 rounded-xl text-slate-900 dark:text-white transition-colors duration-200 placeholder:text-slate-400 dark:text-slate-500 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent transition-all duration-200"
                 />
               </div>
 
@@ -156,7 +156,7 @@ function Register() {
               <div className="space-y-2">
                 <label
                   htmlFor="password"
-                  className="block text-sm font-medium text-neutral-700"
+                  className="block text-sm font-medium text-slate-700 dark:text-slate-300 transition-colors duration-200"
                 >
                   Password
                 </label>
@@ -166,21 +166,21 @@ function Register() {
                   placeholder="Create a strong password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-neutral-900 focus:border-transparent transition-all duration-200"
+                  className="w-full px-4 py-3 bg-slate-50 dark:bg-[#070514] transition-colors duration-200 border border-slate-200 dark:border-[#281F4D] transition-colors duration-200 rounded-xl text-slate-900 dark:text-white transition-colors duration-200 placeholder:text-slate-400 dark:text-slate-500 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent transition-all duration-200"
                 />
-                <p className="text-xs text-neutral-400 mt-1">
+                <p className="text-xs text-slate-400 dark:text-slate-500 transition-colors duration-200 mt-1">
                   Must be at least 8 characters
                 </p>
               </div>
 
               {/* Terms */}
-              <p className="text-xs text-neutral-500 leading-relaxed">
+              <p className="text-xs text-slate-500 dark:text-slate-400 transition-colors duration-200 leading-relaxed">
                 By creating an account, you agree to our{" "}
-                <a href="/" className="text-neutral-900 underline hover:no-underline">
+                <a href="/" className="text-slate-900 dark:text-white transition-colors duration-200 underline hover:no-underline">
                   Terms of Service
                 </a>{" "}
                 and{" "}
-                <a href="/" className="text-neutral-900 underline hover:no-underline">
+                <a href="/" className="text-slate-900 dark:text-white transition-colors duration-200 underline hover:no-underline">
                   Privacy Policy
                 </a>
               </p>
@@ -188,7 +188,7 @@ function Register() {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full bg-neutral-900 text-white py-3.5 px-4 rounded-xl font-medium hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-neutral-900 focus:ring-offset-2 transition-all duration-200 active:scale-[0.98]"
+                className="w-full bg-indigo-600 dark:bg-indigo-500 shadow-sm text-white py-3.5 px-4 rounded-xl font-medium hover:bg-indigo-700 dark:hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2 transition-all duration-200 active:scale-[0.98]"
               >
                 Create Account
               </button>
@@ -197,10 +197,10 @@ function Register() {
             {/* Divider */}
             <div className="relative my-8">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-neutral-200"></div>
+                <div className="w-full border-t border-slate-200 dark:border-[#281F4D] transition-colors duration-200"></div>
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-4 bg-white text-neutral-400">
+                <span className="px-4 bg-white dark:bg-[#100C24] transition-colors duration-200 text-slate-400 dark:text-slate-500 transition-colors duration-200">
                   or sign up with
                 </span>
               </div>
@@ -211,7 +211,7 @@ function Register() {
               <button
                 type="button"
                 onClick={handleGoogleRegister}
-                className="flex items-center justify-center gap-2 px-4 py-3 bg-white border border-neutral-200 rounded-xl text-neutral-700 font-medium hover:bg-neutral-50 focus:outline-none focus:ring-2 focus:ring-neutral-900 focus:ring-offset-1 transition-all duration-200"
+                className="flex items-center justify-center gap-2 px-4 py-3 bg-white dark:bg-[#100C24] transition-colors duration-200 border border-slate-200 dark:border-[#281F4D] transition-colors duration-200 rounded-xl text-slate-700 dark:text-slate-300 transition-colors duration-200 font-medium hover:bg-slate-50 dark:bg-[#070514] transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-1 transition-all duration-200"
               >
                 <svg className="w-5 h-5" viewBox="0 0 24 24">
                   <path
@@ -235,7 +235,7 @@ function Register() {
               </button>
               <button
                 type="button"
-                className="flex items-center justify-center gap-2 px-4 py-3 bg-white border border-neutral-200 rounded-xl text-neutral-700 font-medium hover:bg-neutral-50 focus:outline-none focus:ring-2 focus:ring-neutral-900 focus:ring-offset-1 transition-all duration-200"
+                className="flex items-center justify-center gap-2 px-4 py-3 bg-white dark:bg-[#100C24] transition-colors duration-200 border border-slate-200 dark:border-[#281F4D] transition-colors duration-200 rounded-xl text-slate-700 dark:text-slate-300 transition-colors duration-200 font-medium hover:bg-slate-50 dark:bg-[#070514] transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-1 transition-all duration-200"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
@@ -245,11 +245,11 @@ function Register() {
             </div>
 
             {/* Login Link */}
-            <p className="mt-8 text-center text-sm text-neutral-600">
+            <p className="mt-8 text-center text-sm text-slate-600 dark:text-slate-300 transition-colors duration-200">
               Already have an account?{" "}
               <Link
                 to="/login"
-                className="text-neutral-900 font-medium hover:underline"
+                className="text-slate-900 dark:text-white transition-colors duration-200 font-medium hover:underline"
               >
                 Sign in
               </Link>
@@ -257,7 +257,7 @@ function Register() {
           </div>
 
           {/* Trust Badges */}
-          <div className="mt-6 flex items-center justify-center gap-6 text-neutral-400">
+          <div className="mt-6 flex items-center justify-center gap-6 text-slate-400 dark:text-slate-500 transition-colors duration-200">
             <div className="flex items-center gap-1.5">
               <svg
                 className="w-4 h-4"
@@ -295,28 +295,28 @@ function Register() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-neutral-200 bg-white">
+      <footer className="border-t border-slate-200 dark:border-[#281F4D] transition-colors duration-200 bg-white dark:bg-[#100C24] transition-colors duration-200">
         <div className="max-w-6xl mx-auto px-6 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-neutral-400">
+            <p className="text-sm text-slate-400 dark:text-slate-500 transition-colors duration-200">
               &copy; 2024 Store. All rights reserved.
             </p>
             <div className="flex items-center gap-6">
               <a
                 href="/"
-                className="text-sm text-neutral-400 hover:text-neutral-600 transition-colors"
+                className="text-sm text-slate-400 dark:text-slate-500 transition-colors duration-200 hover:text-slate-600 dark:text-slate-300 transition-colors duration-200 transition-colors"
               >
                 Privacy
               </a>
               <a
                 href="/"
-                className="text-sm text-neutral-400 hover:text-neutral-600 transition-colors"
+                className="text-sm text-slate-400 dark:text-slate-500 transition-colors duration-200 hover:text-slate-600 dark:text-slate-300 transition-colors duration-200 transition-colors"
               >
                 Terms
               </a>
               <a
                 href="/"
-                className="text-sm text-neutral-400 hover:text-neutral-600 transition-colors"
+                className="text-sm text-slate-400 dark:text-slate-500 transition-colors duration-200 hover:text-slate-600 dark:text-slate-300 transition-colors duration-200 transition-colors"
               >
                 Help
               </a>

@@ -23,33 +23,33 @@ function MyOrders() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-slate-50 dark:bg-[#070514] transition-colors duration-200 flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-10 h-10 border-4 border-gray-200 border-t-gray-800 rounded-full animate-spin"></div>
-          <p className="text-gray-600 font-medium">Loading orders...</p>
+          <div className="w-10 h-10 border-4 border-slate-200 dark:border-[#281F4D] transition-colors duration-200 border-t-gray-800 rounded-full animate-spin"></div>
+          <p className="text-slate-600 dark:text-slate-300 transition-colors duration-200 font-medium">Loading orders...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#070514] transition-colors duration-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-2xl sm:text-3xl font-semibold text-gray-900 tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-semibold text-slate-900 dark:text-white transition-colors duration-200 tracking-tight">
             My Orders
           </h1>
-          <p className="mt-1 text-sm text-gray-500">
+          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400 transition-colors duration-200">
             {orders.length} {orders.length === 1 ? "order" : "orders"} placed
           </p>
         </div>
 
         {orders.length === 0 ? (
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-12 text-center">
-            <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <div className="bg-white dark:bg-[#100C24] transition-colors duration-200 rounded-2xl shadow-sm border border-slate-100 dark:border-[#382B66] transition-colors duration-200 p-12 text-center">
+            <div className="w-16 h-16 bg-slate-100 dark:bg-[#1A1438] transition-colors duration-200 rounded-full flex items-center justify-center mx-auto mb-4">
               <svg
-                className="w-8 h-8 text-gray-400"
+                className="w-8 h-8 text-slate-400 dark:text-slate-500 transition-colors duration-200"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -62,49 +62,49 @@ function MyOrders() {
                 />
               </svg>
             </div>
-            <h3 className="text-lg font-medium text-gray-900 mb-1">No orders yet</h3>
-            <p className="text-gray-500">When you place orders, they will appear here.</p>
+            <h3 className="text-lg font-medium text-slate-900 dark:text-white transition-colors duration-200 mb-1">No orders yet</h3>
+            <p className="text-slate-500 dark:text-slate-400 transition-colors duration-200">When you place orders, they will appear here.</p>
           </div>
         ) : (
           <>
             {/* Desktop Table View */}
-            <div className="hidden md:block bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+            <div className="hidden md:block bg-white dark:bg-[#100C24] transition-colors duration-200 rounded-2xl shadow-sm border border-slate-100 dark:border-[#382B66] transition-colors duration-200 overflow-hidden">
               <table className="w-full">
                 <thead>
-                  <tr className="bg-gray-50 border-b border-gray-100">
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                  <tr className="bg-slate-50 dark:bg-[#070514] transition-colors duration-200 border-b border-slate-100 dark:border-[#382B66] transition-colors duration-200">
+                    <th className="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 transition-colors duration-200 uppercase tracking-wider">
                       Order ID
                     </th>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 transition-colors duration-200 uppercase tracking-wider">
                       Date
                     </th>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 transition-colors duration-200 uppercase tracking-wider">
                       Total
                     </th>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 transition-colors duration-200 uppercase tracking-wider">
                       Payment
                     </th>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 transition-colors duration-200 uppercase tracking-wider">
                       Delivery
                     </th>
-                    <th className="px-6 py-4 text-right text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-4 text-right text-xs font-semibold text-slate-500 dark:text-slate-400 transition-colors duration-200 uppercase tracking-wider">
                       Actions
                     </th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-100">
+                <tbody className="divide-y divide-slate-100 dark:divide-[#382B66] transition-colors duration-200">
                   {orders.map((order) => (
                     <tr
                       key={order._id}
-                      className="hover:bg-gray-50 transition-colors duration-150"
+                      className="hover:bg-slate-50 dark:bg-[#070514] transition-colors duration-200 transition-colors duration-150"
                     >
                       <td className="px-6 py-5">
-                        <span className="font-mono text-sm text-gray-900">
+                        <span className="font-mono text-sm text-slate-900 dark:text-white transition-colors duration-200">
                           #{order._id.slice(-8).toUpperCase()}
                         </span>
                       </td>
                       <td className="px-6 py-5">
-                        <span className="text-sm text-gray-600">
+                        <span className="text-sm text-slate-600 dark:text-slate-300 transition-colors duration-200">
                           {new Date(order.createdAt).toLocaleDateString("en-US", {
                             year: "numeric",
                             month: "short",
@@ -113,7 +113,7 @@ function MyOrders() {
                         </span>
                       </td>
                       <td className="px-6 py-5">
-                        <span className="text-sm font-semibold text-gray-900">
+                        <span className="text-sm font-semibold text-slate-900 dark:text-white transition-colors duration-200">
                           ₹{order.totalPrice.toLocaleString()}
                         </span>
                       </td>
@@ -146,7 +146,7 @@ function MyOrders() {
                       <td className="px-6 py-5 text-right">
                         <Link
                           to={`/order/${order._id}`}
-                          className="inline-flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
+                          className="inline-flex items-center gap-1 text-sm font-medium text-slate-700 dark:text-slate-300 transition-colors duration-200 hover:text-slate-900 dark:text-white transition-colors duration-200 transition-colors"
                         >
                           View Details
                           <svg
@@ -175,14 +175,14 @@ function MyOrders() {
               {orders.map((order) => (
                 <div
                   key={order._id}
-                  className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5"
+                  className="bg-white dark:bg-[#100C24] transition-colors duration-200 rounded-2xl shadow-sm border border-slate-100 dark:border-[#382B66] transition-colors duration-200 p-5"
                 >
                   <div className="flex items-start justify-between mb-4">
                     <div>
-                      <p className="font-mono text-sm font-medium text-gray-900">
+                      <p className="font-mono text-sm font-medium text-slate-900 dark:text-white transition-colors duration-200">
                         #{order._id.slice(-8).toUpperCase()}
                       </p>
-                      <p className="text-xs text-gray-500 mt-0.5">
+                      <p className="text-xs text-slate-500 dark:text-slate-400 transition-colors duration-200 mt-0.5">
                         {new Date(order.createdAt).toLocaleDateString("en-US", {
                           year: "numeric",
                           month: "short",
@@ -190,7 +190,7 @@ function MyOrders() {
                         })}
                       </p>
                     </div>
-                    <p className="text-lg font-semibold text-gray-900">
+                    <p className="text-lg font-semibold text-slate-900 dark:text-white transition-colors duration-200">
                       ₹{order.totalPrice.toLocaleString()}
                     </p>
                   </div>
@@ -222,7 +222,7 @@ function MyOrders() {
 
                   <Link
                     to={`/order/${order._id}`}
-                    className="flex items-center justify-center gap-2 w-full py-2.5 px-4 bg-gray-900 hover:bg-gray-800 text-white text-sm font-medium rounded-xl transition-colors"
+                    className="flex items-center justify-center gap-2 w-full py-2.5 px-4 bg-indigo-600 dark:bg-indigo-500 hover:bg-indigo-700 dark:hover:bg-indigo-600 text-white text-sm font-medium rounded-xl transition-colors"
                   >
                     View Order Details
                     <svg
