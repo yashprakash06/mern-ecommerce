@@ -120,10 +120,10 @@ setUploading(false);
   // Loading state
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center p-4">
-        <div className="bg-white rounded-2xl shadow-xl p-8 flex flex-col items-center gap-4">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-[#070514] dark:to-[#070514] transition-colors duration-200 flex items-center justify-center p-4">
+        <div className="bg-white dark:bg-[#100C24] transition-colors duration-200 rounded-2xl shadow-xl p-8 flex flex-col items-center gap-4">
           <div className="w-12 h-12 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin"></div>
-          <p className="text-slate-600 font-medium">Loading product details...</p>
+          <p className="text-slate-600 dark:text-slate-300 transition-colors duration-200 font-medium">Loading product details...</p>
         </div>
       </div>
     );
@@ -132,18 +132,18 @@ setUploading(false);
   // Error state
   if (error) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center p-4">
-        <div className="bg-white rounded-2xl shadow-xl p-8 max-w-md w-full text-center">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-[#070514] dark:to-[#070514] transition-colors duration-200 flex items-center justify-center p-4">
+        <div className="bg-white dark:bg-[#100C24] transition-colors duration-200 rounded-2xl shadow-xl p-8 max-w-md w-full text-center">
           <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <svg className="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
             </svg>
           </div>
-          <h2 className="text-xl font-bold text-slate-800 mb-2">Error Loading Product</h2>
-          <p className="text-slate-600 mb-6">{error}</p>
+          <h2 className="text-xl font-bold text-slate-800 dark:text-white transition-colors duration-200 mb-2">Error Loading Product</h2>
+          <p className="text-slate-600 dark:text-slate-300 transition-colors duration-200 mb-6">{error}</p>
           <button
             onClick={() => navigate("/admin/productlist")}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-slate-800 text-white rounded-xl font-medium hover:bg-slate-700 transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 dark:bg-indigo-500 text-white rounded-xl font-medium hover:bg-indigo-700 dark:hover:bg-indigo-600 transition-colors"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -156,13 +156,13 @@ setUploading(false);
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 py-8 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-[#070514] dark:to-[#070514] transition-colors duration-200 py-8 px-4">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="mb-8">
           <button
             onClick={() => navigate("/admin/productlist")}
-            className="inline-flex items-center gap-2 text-slate-600 hover:text-slate-800 transition-colors mb-4"
+            className="inline-flex items-center gap-2 text-slate-600 dark:text-slate-300 transition-colors duration-200 hover:text-slate-800 dark:hover:text-white transition-colors duration-200 dark:text-white transition-colors duration-200 transition-colors mb-4"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -176,22 +176,22 @@ setUploading(false);
               </svg>
             </div>
             <div>
-              <h1 className="text-2xl sm:text-3xl font-bold text-slate-800">Edit Product</h1>
-              <p className="text-slate-500 mt-1">Update product information and inventory</p>
+              <h1 className="text-2xl sm:text-3xl font-bold text-slate-800 dark:text-white transition-colors duration-200">Edit Product</h1>
+              <p className="text-slate-500 dark:text-slate-400 transition-colors duration-200 mt-1">Update product information and inventory</p>
             </div>
           </div>
         </div>
 
         {/* Form Card */}
-        <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+        <div className="bg-white dark:bg-[#100C24] transition-colors duration-200 rounded-2xl shadow-xl overflow-hidden">
           <form onSubmit={submitHandler}>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-0 lg:gap-8">
               {/* Image Section */}
-              <div className="lg:col-span-1 bg-gradient-to-br from-slate-50 to-slate-100 p-6 lg:p-8">
-                <h3 className="text-lg font-semibold text-slate-800 mb-4">Product Image</h3>
+              <div className="lg:col-span-1 bg-gradient-to-br from-slate-50 to-slate-100 dark:from-[#070514] dark:to-[#070514] transition-colors duration-200 p-6 lg:p-8">
+                <h3 className="text-lg font-semibold text-slate-800 dark:text-white transition-colors duration-200 mb-4">Product Image</h3>
                 
                 {/* Image Preview */}
-                <div className="aspect-square bg-white rounded-xl border-2 border-dashed border-slate-200 overflow-hidden mb-4 flex items-center justify-center">
+                <div className="aspect-square bg-white dark:bg-[#100C24] transition-colors duration-200 rounded-xl border-2 border-dashed border-slate-200 dark:border-[#281F4D] transition-colors duration-200 overflow-hidden mb-4 flex items-center justify-center">
                   {image ? (
                     <img
                       src={image}
@@ -210,21 +210,21 @@ setUploading(false);
 
                 {/* Image URL Input */}
                 <div className="mb-4">
-                  <label className="block text-sm font-medium text-slate-700 mb-2">Image URL</label>
+                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 transition-colors duration-200 mb-2">Image URL</label>
                   <input
                     type="text"
                     value={image}
                     onChange={(e) => setImage(e.target.value)}
                     placeholder="https://example.com/image.jpg"
-                    className="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all text-sm"
+                    className="w-full px-4 py-3 bg-white dark:bg-[#100C24] transition-colors duration-200 border border-slate-200 dark:border-[#281F4D] transition-colors duration-200 rounded-xl text-slate-800 dark:text-white transition-colors duration-200 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all text-sm"
                   />
                 </div>
 
                 {/* File Upload */}
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">Or Upload Image</label>
+                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 transition-colors duration-200 mb-2">Or Upload Image</label>
                   <label className="relative block cursor-pointer">
-                    <div className="flex items-center justify-center gap-2 px-4 py-3 bg-white border border-slate-200 rounded-xl hover:border-indigo-300 hover:bg-indigo-50 transition-all">
+                    <div className="flex items-center justify-center gap-2 px-4 py-3 bg-white dark:bg-[#100C24] transition-colors duration-200 border border-slate-200 dark:border-[#281F4D] transition-colors duration-200 rounded-xl hover:border-indigo-300 hover:bg-indigo-50 transition-all">
                       {uploading ? (
                         <>
                           <div className="w-5 h-5 border-2 border-indigo-200 border-t-indigo-600 rounded-full animate-spin"></div>
@@ -232,10 +232,10 @@ setUploading(false);
                         </>
                       ) : (
                         <>
-                          <svg className="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-5 h-5 text-slate-500 dark:text-slate-400 transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
                           </svg>
-                          <span className="text-sm text-slate-600 font-medium">Choose File</span>
+                          <span className="text-sm text-slate-600 dark:text-slate-300 transition-colors duration-200 font-medium">Choose File</span>
                         </>
                       )}
                     </div>
@@ -251,12 +251,12 @@ setUploading(false);
 
               {/* Form Fields Section */}
               <div className="lg:col-span-2 p-6 lg:p-8">
-                <h3 className="text-lg font-semibold text-slate-800 mb-6">Product Details</h3>
+                <h3 className="text-lg font-semibold text-slate-800 dark:text-white transition-colors duration-200 mb-6">Product Details</h3>
 
                 <div className="space-y-5">
                   {/* Name */}
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">
+                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 transition-colors duration-200 mb-2">
                       Product Name
                     </label>
                     <div className="relative">
@@ -270,7 +270,7 @@ setUploading(false);
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="Enter product name"
-                        className="w-full pl-12 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent focus:bg-white transition-all"
+                        className="w-full pl-12 pr-4 py-3 bg-slate-50 dark:bg-[#070514] transition-colors duration-200 border border-slate-200 dark:border-[#281F4D] transition-colors duration-200 rounded-xl text-slate-800 dark:text-white transition-colors duration-200 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent focus:bg-white dark:bg-[#100C24] transition-colors duration-200 transition-all"
                       />
                     </div>
                   </div>
@@ -279,7 +279,7 @@ setUploading(false);
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     {/* Price */}
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-2">
+                      <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 transition-colors duration-200 mb-2">
                         Price
                       </label>
                       <div className="relative">
@@ -293,14 +293,14 @@ setUploading(false);
                           placeholder="0.00"
                           min="0"
                           step="0.01"
-                          className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent focus:bg-white transition-all"
+                          className="w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-[#070514] transition-colors duration-200 border border-slate-200 dark:border-[#281F4D] transition-colors duration-200 rounded-xl text-slate-800 dark:text-white transition-colors duration-200 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent focus:bg-white dark:bg-[#100C24] transition-colors duration-200 transition-all"
                         />
                       </div>
                     </div>
 
                     {/* Count In Stock */}
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-2">
+                      <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 transition-colors duration-200 mb-2">
                         Count In Stock
                       </label>
                       <div className="relative">
@@ -315,7 +315,7 @@ setUploading(false);
                           onChange={(e) => setCountInStock(e.target.value)}
                           placeholder="0"
                           min="0"
-                          className="w-full pl-12 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent focus:bg-white transition-all"
+                          className="w-full pl-12 pr-4 py-3 bg-slate-50 dark:bg-[#070514] transition-colors duration-200 border border-slate-200 dark:border-[#281F4D] transition-colors duration-200 rounded-xl text-slate-800 dark:text-white transition-colors duration-200 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent focus:bg-white dark:bg-[#100C24] transition-colors duration-200 transition-all"
                         />
                       </div>
                     </div>
@@ -325,7 +325,7 @@ setUploading(false);
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     {/* Brand */}
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-2">
+                      <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 transition-colors duration-200 mb-2">
                         Brand
                       </label>
                       <div className="relative">
@@ -339,14 +339,14 @@ setUploading(false);
                           value={brand}
                           onChange={(e) => setBrand(e.target.value)}
                           placeholder="Enter brand name"
-                          className="w-full pl-12 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent focus:bg-white transition-all"
+                          className="w-full pl-12 pr-4 py-3 bg-slate-50 dark:bg-[#070514] transition-colors duration-200 border border-slate-200 dark:border-[#281F4D] transition-colors duration-200 rounded-xl text-slate-800 dark:text-white transition-colors duration-200 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent focus:bg-white dark:bg-[#100C24] transition-colors duration-200 transition-all"
                         />
                       </div>
                     </div>
 
                     {/* Category */}
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-2">
+                      <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 transition-colors duration-200 mb-2">
                         Category
                       </label>
                       <div className="relative">
@@ -360,7 +360,7 @@ setUploading(false);
                           value={category}
                           onChange={(e) => setCategory(e.target.value)}
                           placeholder="Enter category"
-                          className="w-full pl-12 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent focus:bg-white transition-all"
+                          className="w-full pl-12 pr-4 py-3 bg-slate-50 dark:bg-[#070514] transition-colors duration-200 border border-slate-200 dark:border-[#281F4D] transition-colors duration-200 rounded-xl text-slate-800 dark:text-white transition-colors duration-200 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent focus:bg-white dark:bg-[#100C24] transition-colors duration-200 transition-all"
                         />
                       </div>
                     </div>
@@ -368,7 +368,7 @@ setUploading(false);
 
                   {/* Description */}
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">
+                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 transition-colors duration-200 mb-2">
                       Description
                     </label>
                     <textarea
@@ -376,13 +376,13 @@ setUploading(false);
                       onChange={(e) => setDescription(e.target.value)}
                       placeholder="Enter product description..."
                       rows="5"
-                      className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent focus:bg-white transition-all resize-none"
+                      className="w-full px-4 py-3 bg-slate-50 dark:bg-[#070514] transition-colors duration-200 border border-slate-200 dark:border-[#281F4D] transition-colors duration-200 rounded-xl text-slate-800 dark:text-white transition-colors duration-200 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent focus:bg-white dark:bg-[#100C24] transition-colors duration-200 transition-all resize-none"
                     />
                   </div>
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex flex-col sm:flex-row gap-3 mt-8 pt-6 border-t border-slate-100">
+                <div className="flex flex-col sm:flex-row gap-3 mt-8 pt-6 border-t border-slate-100 dark:border-[#382B66] transition-colors duration-200">
                   <button
                     type="submit"
                     className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl font-semibold hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all shadow-lg shadow-indigo-500/25"
@@ -395,7 +395,7 @@ setUploading(false);
                   <button
                     type="button"
                     onClick={() => navigate("/admin/productlist")}
-                    className="px-6 py-3 bg-slate-100 text-slate-700 rounded-xl font-semibold hover:bg-slate-200 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 transition-all"
+                    className="px-6 py-3 bg-slate-100 dark:bg-[#1A1438] transition-colors duration-200 text-slate-700 dark:text-slate-300 transition-colors duration-200 rounded-xl font-semibold hover:bg-slate-200 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 transition-all"
                   >
                     Cancel
                   </button>

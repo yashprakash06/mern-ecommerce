@@ -59,10 +59,10 @@ function UserListPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-neutral-50 flex items-center justify-center">
+      <div className="min-h-screen bg-slate-50 dark:bg-[#070514] transition-colors duration-200 flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-10 h-10 border-4 border-neutral-200 border-t-neutral-900 rounded-full animate-spin" />
-          <p className="text-neutral-600 text-sm font-medium">Loading users...</p>
+          <div className="w-10 h-10 border-4 border-slate-200 dark:border-[#281F4D] transition-colors duration-200 border-t-neutral-900 rounded-full animate-spin" />
+          <p className="text-slate-600 dark:text-slate-300 transition-colors duration-200 text-sm font-medium">Loading users...</p>
         </div>
       </div>
     );
@@ -70,15 +70,15 @@ function UserListPage() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-neutral-50 flex items-center justify-center p-4">
-        <div className="bg-white rounded-2xl shadow-sm border border-neutral-200 p-8 max-w-md w-full text-center">
+      <div className="min-h-screen bg-slate-50 dark:bg-[#070514] transition-colors duration-200 flex items-center justify-center p-4">
+        <div className="bg-white dark:bg-[#100C24] transition-colors duration-200 rounded-2xl shadow-sm border border-slate-200 dark:border-[#281F4D] transition-colors duration-200 p-8 max-w-md w-full text-center">
           <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <svg className="w-8 h-8 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
             </svg>
           </div>
-          <h2 className="text-xl font-semibold text-neutral-900 mb-2">Error Loading Users</h2>
-          <p className="text-neutral-600">{error}</p>
+          <h2 className="text-xl font-semibold text-slate-900 dark:text-white transition-colors duration-200 mb-2">Error Loading Users</h2>
+          <p className="text-slate-600 dark:text-slate-300 transition-colors duration-200">{error}</p>
         </div>
       </div>
     );
@@ -93,26 +93,26 @@ const userCount = Array.isArray(users)
   : 0;
 
   return (
-    <div className="min-h-screen bg-neutral-50">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#070514] transition-colors duration-200">
       {/* Header */}
-      <div className="bg-white border-b border-neutral-200">
+      <div className="bg-white dark:bg-[#100C24] transition-colors duration-200 border-b border-slate-200 dark:border-[#281F4D] transition-colors duration-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
-              <h1 className="text-2xl sm:text-3xl font-semibold text-neutral-900 tracking-tight">
+              <h1 className="text-2xl sm:text-3xl font-semibold text-slate-900 dark:text-white transition-colors duration-200 tracking-tight">
                 User Management
               </h1>
-              <p className="mt-1 text-neutral-500">
+              <p className="mt-1 text-slate-500 dark:text-slate-400 transition-colors duration-200">
                 {users.length} {users.length === 1 ? "user" : "users"} registered
               </p>
             </div>
-            <div className="flex items-center gap-2 text-sm text-neutral-500">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-neutral-100 rounded-full">
+            <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400 transition-colors duration-200">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 dark:bg-[#1A1438] transition-colors duration-200 rounded-full">
                 <span className="w-2 h-2 bg-emerald-500 rounded-full" />
                 {adminCount} Admins
               </span>
 
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-neutral-100 rounded-full">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 dark:bg-[#1A1438] transition-colors duration-200 rounded-full">
                 <span className="w-2 h-2 bg-blue-500 rounded-full" />
                 {userCount} Users
               </span>
@@ -124,42 +124,42 @@ const userCount = Array.isArray(users)
       {/* Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Desktop Table */}
-        <div className="hidden lg:block bg-white rounded-2xl shadow-sm border border-neutral-200 overflow-hidden">
+        <div className="hidden lg:block bg-white dark:bg-[#100C24] transition-colors duration-200 rounded-2xl shadow-sm border border-slate-200 dark:border-[#281F4D] transition-colors duration-200 overflow-hidden">
           <table className="w-full">
             <thead>
-              <tr className="bg-neutral-50 border-b border-neutral-200">
-                <th className="px-6 py-4 text-left text-xs font-semibold text-neutral-500 uppercase tracking-wider">
+              <tr className="bg-slate-50 dark:bg-[#070514] transition-colors duration-200 border-b border-slate-200 dark:border-[#281F4D] transition-colors duration-200">
+                <th className="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 transition-colors duration-200 uppercase tracking-wider">
                   User
                 </th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-neutral-500 uppercase tracking-wider">
+                <th className="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 transition-colors duration-200 uppercase tracking-wider">
                   User ID
                 </th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-neutral-500 uppercase tracking-wider">
+                <th className="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 transition-colors duration-200 uppercase tracking-wider">
                   Role
                 </th>
-                <th className="px-6 py-4 text-right text-xs font-semibold text-neutral-500 uppercase tracking-wider">
+                <th className="px-6 py-4 text-right text-xs font-semibold text-slate-500 dark:text-slate-400 transition-colors duration-200 uppercase tracking-wider">
                   Actions
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-neutral-100">
+            <tbody className="divide-y divide-slate-100 dark:divide-[#382B66] transition-colors duration-200">
               {users.map((u) => (
-                <tr key={u._id} className="hover:bg-neutral-50 transition-colors">
+                <tr key={u._id} className="hover:bg-slate-50 dark:bg-[#070514] transition-colors duration-200 transition-colors">
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-4">
                       <div className="w-10 h-10 rounded-full bg-gradient-to-br from-neutral-200 to-neutral-300 flex items-center justify-center flex-shrink-0">
-                        <span className="text-sm font-semibold text-neutral-600">
+                        <span className="text-sm font-semibold text-slate-600 dark:text-slate-300 transition-colors duration-200">
                           {u.name?.charAt(0).toUpperCase() || "U"}
                         </span>
                       </div>
                       <div className="min-w-0">
-                        <p className="font-medium text-neutral-900 truncate">{u.name}</p>
-                        <p className="text-sm text-neutral-500 truncate">{u.email}</p>
+                        <p className="font-medium text-slate-900 dark:text-white transition-colors duration-200 truncate">{u.name}</p>
+                        <p className="text-sm text-slate-500 dark:text-slate-400 transition-colors duration-200 truncate">{u.email}</p>
                       </div>
                     </div>
                   </td>
                   <td className="px-6 py-4">
-                    <code className="text-xs bg-neutral-100 text-neutral-600 px-2 py-1 rounded font-mono">
+                    <code className="text-xs bg-slate-100 dark:bg-[#1A1438] transition-colors duration-200 text-slate-600 dark:text-slate-300 transition-colors duration-200 px-2 py-1 rounded font-mono">
                       {u._id.slice(-8)}
                     </code>
                   </td>
@@ -183,7 +183,7 @@ const userCount = Array.isArray(users)
                   <td className="px-6 py-4">
                     <div className="flex items-center justify-end gap-2">
                       <Link to={`/admin/user/${u._id}/edit`}>
-                        <button className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-neutral-700 bg-white border border-neutral-300 rounded-lg hover:bg-neutral-50 hover:border-neutral-400 transition-all">
+                        <button className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 transition-colors duration-200 bg-white dark:bg-[#100C24] transition-colors duration-200 border border-slate-300 dark:border-slate-600 transition-colors duration-200 rounded-lg hover:bg-slate-50 dark:bg-[#070514] transition-colors duration-200 hover:border-slate-400 dark:hover:border-slate-500 transition-colors duration-200 transition-all">
                           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                           </svg>
@@ -194,7 +194,7 @@ const userCount = Array.isArray(users)
                       {!u.isAdmin && (
                         <button
                           onClick={() => deleteHandler(u._id)}
-                          className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-red-600 bg-white border border-red-200 rounded-lg hover:bg-red-50 hover:border-red-300 transition-all"
+                          className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-red-600 bg-white dark:bg-[#100C24] transition-colors duration-200 border border-red-200 rounded-lg hover:bg-red-50 hover:border-red-300 transition-all"
                         >
                           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -215,18 +215,18 @@ const userCount = Array.isArray(users)
           {users.map((u) => (
             <div
               key={u._id}
-              className="bg-white rounded-2xl shadow-sm border border-neutral-200 p-5"
+              className="bg-white dark:bg-[#100C24] transition-colors duration-200 rounded-2xl shadow-sm border border-slate-200 dark:border-[#281F4D] transition-colors duration-200 p-5"
             >
               <div className="flex items-start justify-between gap-4 mb-4">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-neutral-200 to-neutral-300 flex items-center justify-center flex-shrink-0">
-                    <span className="text-base font-semibold text-neutral-600">
+                    <span className="text-base font-semibold text-slate-600 dark:text-slate-300 transition-colors duration-200">
                       {u.name?.charAt(0).toUpperCase() || "U"}
                     </span>
                   </div>
                   <div className="min-w-0">
-                    <p className="font-semibold text-neutral-900">{u.name}</p>
-                    <p className="text-sm text-neutral-500 truncate">{u.email}</p>
+                    <p className="font-semibold text-slate-900 dark:text-white transition-colors duration-200">{u.name}</p>
+                    <p className="text-sm text-slate-500 dark:text-slate-400 transition-colors duration-200 truncate">{u.email}</p>
                   </div>
                 </div>
                 {u.isAdmin ? (
@@ -246,16 +246,16 @@ const userCount = Array.isArray(users)
                 )}
               </div>
 
-              <div className="mb-4 pb-4 border-b border-neutral-100">
-                <p className="text-xs text-neutral-400 uppercase tracking-wider mb-1">User ID</p>
-                <code className="text-xs bg-neutral-100 text-neutral-600 px-2 py-1 rounded font-mono">
+              <div className="mb-4 pb-4 border-b border-slate-100 dark:border-[#382B66] transition-colors duration-200">
+                <p className="text-xs text-slate-400 dark:text-slate-500 transition-colors duration-200 uppercase tracking-wider mb-1">User ID</p>
+                <code className="text-xs bg-slate-100 dark:bg-[#1A1438] transition-colors duration-200 text-slate-600 dark:text-slate-300 transition-colors duration-200 px-2 py-1 rounded font-mono">
                   {u._id}
                 </code>
               </div>
 
               <div className="flex items-center gap-3">
                 <Link to={`/admin/user/${u._id}/edit`} className="flex-1">
-                  <button className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium text-neutral-700 bg-white border border-neutral-300 rounded-xl hover:bg-neutral-50 transition-all">
+                  <button className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium text-slate-700 dark:text-slate-300 transition-colors duration-200 bg-white dark:bg-[#100C24] transition-colors duration-200 border border-slate-300 dark:border-slate-600 transition-colors duration-200 rounded-xl hover:bg-slate-50 dark:bg-[#070514] transition-colors duration-200 transition-all">
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                     </svg>
@@ -266,7 +266,7 @@ const userCount = Array.isArray(users)
                 {!u.isAdmin && (
                   <button
                     onClick={() => deleteHandler(u._id)}
-                    className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium text-red-600 bg-white border border-red-200 rounded-xl hover:bg-red-50 transition-all"
+                    className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium text-red-600 bg-white dark:bg-[#100C24] transition-colors duration-200 border border-red-200 rounded-xl hover:bg-red-50 transition-all"
                   >
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -281,14 +281,14 @@ const userCount = Array.isArray(users)
 
         {/* Empty State */}
         {users.length === 0 && (
-          <div className="bg-white rounded-2xl shadow-sm border border-neutral-200 p-12 text-center">
-            <div className="w-16 h-16 bg-neutral-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-8 h-8 text-neutral-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div className="bg-white dark:bg-[#100C24] transition-colors duration-200 rounded-2xl shadow-sm border border-slate-200 dark:border-[#281F4D] transition-colors duration-200 p-12 text-center">
+            <div className="w-16 h-16 bg-slate-100 dark:bg-[#1A1438] transition-colors duration-200 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg className="w-8 h-8 text-slate-400 dark:text-slate-500 transition-colors duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
               </svg>
             </div>
-            <h3 className="text-lg font-semibold text-neutral-900 mb-1">No users found</h3>
-            <p className="text-neutral-500">There are no registered users to display.</p>
+            <h3 className="text-lg font-semibold text-slate-900 dark:text-white transition-colors duration-200 mb-1">No users found</h3>
+            <p className="text-slate-500 dark:text-slate-400 transition-colors duration-200">There are no registered users to display.</p>
           </div>
         )}
       </div>
