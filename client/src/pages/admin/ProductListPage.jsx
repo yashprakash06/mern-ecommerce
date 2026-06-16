@@ -163,7 +163,7 @@ function ProductListPage() {
                   </td>
                   <td className="px-6 py-4">
                     <span className="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-medium bg-purple-50 text-purple-700">
-                      {product.category}
+                  {product.category?.name || product.category}
                     </span>
                   </td>
                   <td className="px-6 py-4">
@@ -210,7 +210,7 @@ function ProductListPage() {
                   {product.brand}
                 </span>
                 <span className="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-medium bg-purple-50 text-purple-700">
-                  {product.category}
+                  {product.category?.name || product.category}
                 </span>
               </div>
 

@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useCart } from "../context/CartContext";
 import { useTheme } from "../context/ThemeContext";
+import SearchBar from "./SearchBar";
 
 function Navbar() {
   const { user, logout } = useAuth();
@@ -26,6 +27,11 @@ function Navbar() {
         >
           Store
         </Link>
+
+        {/* Search Bar */}
+        <div className="flex-1 max-w-lg mx-4">
+          <SearchBar />
+        </div>
 
         {/* Navigation Links */}
         <div className="flex items-center gap-2 sm:gap-4">

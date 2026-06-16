@@ -18,7 +18,8 @@ const productSchema = new mongoose.Schema(
     },
 
     category: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Category",
       required: true,
     },
 
@@ -31,6 +32,10 @@ const productSchema = new mongoose.Schema(
       type: Number,
       required: true,
       default: 0,
+    },
+
+    discountPrice: {
+      type: Number,
     },
 
     countInStock: {
@@ -50,11 +55,19 @@ const productSchema = new mongoose.Schema(
       required: true,
       default: 0,
     },
+
+    featured: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,
   }
 );
+
+// Add text index for search
+productSchema.index({ name: 'text', brand: 'text', description: 'text' });
 
 const Product = mongoose.model("Product", productSchema);
 

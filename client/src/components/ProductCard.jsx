@@ -35,7 +35,7 @@ function ProductCard({ product }) {
             {product.brand}
           </span>
           <span className="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-400">
-            {product.category}
+            {product.category?.name || product.category}
           </span>
         </div>
 

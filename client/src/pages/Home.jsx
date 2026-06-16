@@ -10,7 +10,7 @@ function Home() {
     const fetchProducts = async () => {
       try {
         const res = await API.get("/api/products");
-        setProducts(res.data);
+        setProducts(Array.isArray(res.data) ? res.data : res.data.products || []);
       } catch (error) {
         console.error("Failed to fetch products:", error);
       } finally {

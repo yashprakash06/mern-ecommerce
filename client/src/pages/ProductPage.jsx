@@ -149,7 +149,7 @@ function ProductPage() {
               <div className="flex items-center gap-2 mb-4">
                 <span className="text-sm text-slate-500 dark:text-slate-400">Category:</span>
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-slate-100 dark:bg-[#1A1438] text-slate-700 dark:text-slate-300">
-                  {product.category}
+                  {product.category?.name || product.category}
                 </span>
               </div>
 
