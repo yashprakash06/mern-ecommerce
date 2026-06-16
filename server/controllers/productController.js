@@ -97,6 +97,20 @@ export const updateProduct = async (req, res) => {
     });
   }
 
+  // Handle category name -> ObjectId resolution
+  let categoryId = req.body.category;
+  
+  if (categoryId && typeof categoryId === 'string' && !categoryId.match(/^[0-9a-fA-F]{24}$/)) {
+     const existingCategory = await Category.findOne({ name: { $regex: new RegExp(`^${categoryId}$`, 'i') } });
+     if (existingCategory) {
+       categoryId = existingCategory._id;
+     } else {
+       return res.status(400).json({ message: `Category "${categoryId}" not found` });
+     }
+  } else if (categoryId && categoryId._id) {
+     categoryId = categoryId._id;
+  }
+
   // Update fields from request body
   product.name = req.body.name;
   product.price = req.body.price;
@@ -104,7 +118,7 @@ export const updateProduct = async (req, res) => {
   product.description = req.body.description;
   product.image = req.body.image;
   product.brand = req.body.brand;
-  product.category = req.body.category;
+  product.category = categoryId;
   product.countInStock = req.body.countInStock;
   product.featured = req.body.featured;
 

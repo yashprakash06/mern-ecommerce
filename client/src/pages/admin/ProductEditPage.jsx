@@ -35,7 +35,7 @@ function ProductEditPage() {
         setPrice(data.price);
         setImage(data.image);
         setBrand(data.brand);
-        setCategory(data.category);
+        setCategory(data.category?.name || data.category);
         setCountInStock(data.countInStock);
         setDescription(data.description);
       } catch (err) {
