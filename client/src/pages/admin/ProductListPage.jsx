@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import API from "../../services/api";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import SearchBox from "../../components/SearchBox";
+import Paginate from "../../components/Paginate";
 
 function ProductListPage() {
   const navigate = useNavigate();
@@ -8,6 +10,13 @@ function ProductListPage() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [isSearching, setIsSearching] = useState(false);
+  const [page, setPage] = useState(1);
+  const [pages, setPages] = useState(1);
+  const [searchParams] = useSearchParams();
+
+  const keyword = searchParams.get("search") || "";
+  const pageNumber = searchParams.get("page") || "1";
 
   // Delete product handler
   const deleteHandler = async (id) => {
@@ -64,9 +73,25 @@ function ProductListPage() {
   // Fetch all products
   useEffect(() => {
     const fetchProducts = async () => {
+      if (products.length === 0) setLoading(true);
+      else setIsSearching(true);
+
       try {
-        const { data } = await API.get("/api/products");
-        setProducts(Array.isArray(data) ? data : data.products || []);
+        const endpoint = keyword
+          ? `/api/products/search?q=${keyword}&page=${pageNumber}`
+          : `/api/products?page=${pageNumber}`;
+          
+        const { data } = await API.get(endpoint);
+        
+        if (Array.isArray(data)) {
+          setProducts(data);
+          setPage(1);
+          setPages(1);
+        } else {
+          setProducts(data.products || []);
+          setPage(data.page || 1);
+          setPages(data.pages || 1);
+        }
       } catch (err) {
         setError(
           err.response?.data?.message ||
@@ -74,11 +99,12 @@ function ProductListPage() {
         );
       } finally {
         setLoading(false);
+        setIsSearching(false);
       }
     };
 
     fetchProducts();
-  }, []);
+  }, [keyword, pageNumber]);
 
   if (loading) {
     return (
@@ -115,18 +141,23 @@ function ProductListPage() {
           <div>
             <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white transition-colors duration-200">Product Management</h1>
             <p className="mt-1 text-slate-500 dark:text-slate-400 transition-colors duration-200">
-              {products.length} {products.length === 1 ? "product" : "products"} in inventory
+              {products.length} {products.length === 1 ? "product" : "products"} {keyword ? 'found' : 'in inventory'}
             </p>
           </div>
-          <button
-            onClick={createProductHandler}
-            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-indigo-600 text-white font-medium rounded-xl hover:bg-indigo-700 transition-colors shadow-sm"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-            </svg>
-            Create Product
-          </button>
+          <div className="flex flex-col sm:flex-row gap-4 flex-1 justify-end">
+            <div className="w-full sm:max-w-xs lg:max-w-md">
+              <SearchBox isSearching={isSearching} />
+            </div>
+            <button
+              onClick={createProductHandler}
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-indigo-600 text-white font-medium rounded-xl hover:bg-indigo-700 transition-colors shadow-sm whitespace-nowrap"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+              </svg>
+              Create Product
+            </button>
+          </div>
         </div>
 
         {/* Products Table - Desktop */}
@@ -237,6 +268,8 @@ function ProductListPage() {
           ))}
         </div>
 
+        <Paginate pages={pages} page={page} />
+
         {/* Empty State */}
         {products.length === 0 && (
           <div className="bg-white dark:bg-[#100C24] transition-colors duration-200 rounded-2xl shadow-sm border border-slate-100 dark:border-[#382B66] transition-colors duration-200 p-12 text-center">
@@ -245,8 +278,12 @@ function ProductListPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
               </svg>
             </div>
-            <h3 className="text-lg font-semibold text-slate-900 dark:text-white transition-colors duration-200 mb-2">No products yet</h3>
-            <p className="text-slate-500 dark:text-slate-400 transition-colors duration-200 mb-6">Get started by creating your first product.</p>
+            <h3 className="text-lg font-semibold text-slate-900 dark:text-white transition-colors duration-200 mb-2">
+              {keyword ? 'No products found' : 'No products yet'}
+            </h3>
+            <p className="text-slate-500 dark:text-slate-400 transition-colors duration-200 mb-6">
+              {keyword ? `We couldn't find any products matching "${keyword}".` : 'Get started by creating your first product.'}
+            </p>
             <button
               onClick={createProductHandler}
               className="inline-flex items-center gap-2 px-5 py-2.5 bg-indigo-600 text-white font-medium rounded-xl hover:bg-indigo-700 transition-colors"

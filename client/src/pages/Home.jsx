@@ -1,25 +1,54 @@
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import API from "../services/api";
 import { ProductGrid } from "../components/ProductCard";
+import SearchBox from "../components/SearchBox";
+import Paginate from "../components/Paginate";
 
 function Home() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isSearching, setIsSearching] = useState(false);
+  const [page, setPage] = useState(1);
+  const [pages, setPages] = useState(1);
+  const [searchParams] = useSearchParams();
+
+  const keyword = searchParams.get("search") || "";
+  const pageNumber = searchParams.get("page") || "1";
 
   useEffect(() => {
     const fetchProducts = async () => {
+      // Show full loading on initial load, but subtle spinner while searching
+      if (products.length === 0) setLoading(true);
+      else setIsSearching(true);
+
       try {
-        const res = await API.get("/api/products");
-        setProducts(Array.isArray(res.data) ? res.data : res.data.products || []);
+        const endpoint = keyword
+          ? `/api/products/search?q=${keyword}&page=${pageNumber}`
+          : `/api/products?page=${pageNumber}`;
+          
+        const { data } = await API.get(endpoint);
+        
+        // Handle both array response and paginated object response
+        if (Array.isArray(data)) {
+          setProducts(data);
+          setPage(1);
+          setPages(1);
+        } else {
+          setProducts(data.products || []);
+          setPage(data.page || 1);
+          setPages(data.pages || 1);
+        }
       } catch (error) {
         console.error("Failed to fetch products:", error);
       } finally {
         setLoading(false);
+        setIsSearching(false);
       }
     };
 
     fetchProducts();
-  }, []);
+  }, [keyword, pageNumber]);
 
   if (loading) {
     return (
@@ -48,10 +77,11 @@ function Home() {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
           <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
-            Latest Products
+            {keyword ? `Search Results for "${keyword}"` : "Latest Products"}
           </h2>
+          <SearchBox isSearching={isSearching} />
         </div>
 
         {products.length === 0 ? (
@@ -59,11 +89,16 @@ function Home() {
             <svg className="mx-auto h-12 w-12 text-slate-400 dark:text-slate-600 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
             </svg>
-            <h3 className="text-lg font-medium text-slate-900 dark:text-white">No products</h3>
-            <p className="mt-1 text-slate-500 dark:text-slate-400">We couldn't find any products matching your criteria.</p>
+            <h3 className="text-lg font-medium text-slate-900 dark:text-white">No products found</h3>
+            <p className="mt-1 text-slate-500 dark:text-slate-400">
+              {keyword ? `We couldn't find any products matching "${keyword}".` : "We couldn't find any products matching your criteria."}
+            </p>
           </div>
         ) : (
-          <ProductGrid products={products} />
+          <>
+            <ProductGrid products={products} />
+            <Paginate pages={pages} page={page} />
+          </>
         )}
       </main>
     </div>
