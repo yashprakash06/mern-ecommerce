@@ -104,7 +104,7 @@ function ProductListPage() {
     };
 
     fetchProducts();
-  }, [keyword, pageNumber]);
+  }, [keyword, pageNumber, products.length]);
 
   if (loading) {
     return (
